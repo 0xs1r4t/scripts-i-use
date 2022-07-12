@@ -1,0 +1,6 @@
+# no files in this folder are to be committed
+do-not-commit/
+
+# junk files
+*.un~
+*.swp
