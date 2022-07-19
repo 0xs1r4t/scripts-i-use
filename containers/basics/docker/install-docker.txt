@@ -1,0 +1,15 @@
+installation is different for all operating systems (duh)
+read the docs - https://docs.docker.com/engine/install/debian/
+
+# some commands
+sudo systemctl enable docker
+sudo systemctl start docker
+
+# create a user called "user" who can use docker without sudo privileges
+sudo usermod -a -G docker user 
+grep docker /etc/group # user
+exit # restart system
+
+# starter commands
+docker run hello-world
+docker ps -a

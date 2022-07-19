@@ -1,0 +1,103 @@
+Welcome to A Cloud Guru's SSH Instant Terminal
+
+You can use this terminal to ssh to other systems.
+- Just run 'ssh USERNAME@HOSTNAME'
+
+You can add a pem key too.
+- Just run 'add_key' and follow the instructions.
+
+
+
+Advanced SSH options:
+
+Dropbear SSH client v2020.81 https://matt.ucc.asn.au/dropbear/dropbear.html
+Usage: ssh [options] [user@]host[/port] [command]
+-p <remoteport>
+-l <username>
+-t    Allocate a pty
+-T    Don't allocate a pty
+-N    Don't run a remote command
+-f    Run in background after auth
+-y    Always accept remote host key if unknown
+-y -y Don't perform any remote host key checking (caution)
+-s    Request a subsystem (use by external sftp)
+-o option     Set option in OpenSSH-like format ('-o help' to list options)
+-i <identityfile>   (multiple allowed, default .ssh/id_dropbear)
+-A    Enable agent auth forwarding
+-W <receive_window_buffer> (default 24576, larger may be faster, max 1MB)
+-K <keepalive>  (0 is never, default 0)
+-I <idle_timeout>  (0 is never, default 0)
+-c <cipher list> Specify preferred ciphers ('-c help' to list options)
+-m <MAC list> Specify preferred MACs for packet verification (or '-m help')
+-b    [bind_address][:bind_port]
+-V    Version
+/ $ ssh cloud_user@$IP
+
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 4.4.0-1128-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+UA Infra: Extended Security Maintenance (ESM) is not enabled.
+
+1 update can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+85 additional security updates can be applied with UA Infra: ESM
+Learn more about enabling UA Infra: ESM service for Ubuntu 16.04 at
+https://ubuntu.com/16-04
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+cloud_user@ip-10-0-1-176:~$ cat /etc/issue
+Ubuntu 16.04.7 LTS \n \l
+
+cloud_user@ip-10-0-1-176:~$ sudo apt-get install lxd lxd-client
+[sudo] password for cloud_user:
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+lxd is already the newest version (2.0.11-0ubuntu1~16.04.4).
+lxd-client is already the newest version (2.0.11-0ubuntu1~16.04.4).
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+cloud_user@ip-10-0-1-176:~$ sudo lxd init
+Do you want to configure a new storage pool (yes/no) [default=yes]? yes
+Name of the storage backend to use (dir or zfs) [default=dir]:
+Would you like LXD to be available over the network (yes/no)[default=no]?
+Do you want to configure the LXD bridge (yes/no) [default=yes]?
+Warning: Stopping lxd.service, but it can still be activatedby:
+  lxd.socket
+LXD has been successfully configured.
+cloud_user@ip-10-0-1-176:~$ sudo lxc launch images:alpine/3.14 my-alpine
+Generating a client certificate. This may take a minute...
+If this is your first time using LXD, you should also run: sudo lxd init
+To start your first container, try: lxc launch ubuntu:16.04
+
+Creating my-alpine
+Starting my-alpine
+cloud_user@ip-10-0-1-176:~$ sudo lxc list
++-----------+---------+---------------------+------+------------+-----------+
+|   NAME    |  STATE  |        IPV4         | IPV6 |    TYPE   | SNAPSHOTS |
++-----------+---------+---------------------+------+------------+-----------+
+| my-alpine | RUNNING | 10.223.53.90 (eth0) |      | PERSISTENT | 0         |
++-----------+---------+---------------------+------+------------+-----------+
+cloud_user@ip-10-0-1-176:~$ sudo lxc exec my-alpine -- /bin/ash
+~ # echo hello world > hello.txt
+~ # cat hello.txt
+hello world
+~ # exit
+cloud_user@ip-10-0-1-176:~$ ^C

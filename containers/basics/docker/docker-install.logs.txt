@@ -1,0 +1,323 @@
+Welcome to A Cloud Guru's SSH Instant Terminal
+
+You can use this terminal to ssh to other systems.
+- Just run 'ssh USERNAME@HOSTNAME'
+
+You can add a pem key too.
+- Just run 'add_key' and follow the instructions.
+
+
+
+Advanced SSH options:
+
+Dropbear SSH client v2020.81 https://matt.ucc.asn.au/dropbear/dropbear.html
+Usage: ssh [options] [user@]host[/port] [command]
+-p <remoteport>
+-l <username>
+-t    Allocate a pty
+-T    Don't allocate a pty
+-N    Don't run a remote command
+-f    Run in background after auth
+-y    Always accept remote host key if unknown
+-y -y Don't perform any remote host key checking (caution)
+-s    Request a subsystem (use by external sftp)
+-o option     Set option in OpenSSH-like format ('-o help' to list options)
+-i <identityfile>   (multiple allowed, default .ssh/id_dropbear)
+-A    Enable agent auth forwarding
+-W <receive_window_buffer> (default 24576, larger may be faster, max 1MB)
+-K <keepalive>  (0 is never, default 0)
+-I <idle_timeout>  (0 is never, default 0)
+-c <cipher list> Specify preferred ciphers ('-c help' to list options)
+-m <MAC list> Specify preferred MACs for packet verification (or '-m help')
+-b    [bind_address][:bind_port]
+-V    Version
+/ $ ssh cloud_user@107.20.84.39
+
+Host '107.20.84.39' is not in the trusted hosts file.
+(ssh-ed25519 fingerprint sha1!! 34:fc:92:50:1e:84:5f:53:e1:09:90:c9:70:b9:9f:3a:cf:f5:a8:e0)
+Do you want to continue connecting? (y/n) y
+cloud_user@107.20.84.39's password:
+[cloud_user@ip-10-0-1-100 ~]$ sudo yum install yum-utils lvm2 device-mapper-persistent-data
+[sudo] password for cloud_user:
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+ * base: download.cf.centos.org
+ * extras: download.cf.centos.org
+ * updates: download.cf.centos.org
+base                                  | 3.6 kB     00:00
+extras                                | 2.9 kB     00:00
+updates                               | 2.9 kB     00:00
+(1/4): base/7/x86_64/group_gz           | 153 kB   00:00
+(2/4): extras/7/x86_64/primary_db       | 246 kB   00:00
+(3/4): updates/7/x86_64/primary_db      |  14 MB   00:00
+(4/4): base/7/x86_64/primary_db         | 6.1 MB   00:00
+Package yum-utils-1.1.31-54.el7_8.noarch already installed and latest version
+Resolving Dependencies
+--> Running transaction check
+---> Package device-mapper-persistent-data.x86_64 0:0.8.5-3.el7_9.2 will be installed
+--> Processing Dependency: libaio.so.1(LIBAIO_0.4)(64bit) for package: device-mapper-persistent-data-0.8.5-3.el7_9.2.x86_64
+--> Processing Dependency: libaio.so.1(LIBAIO_0.1)(64bit) for package: device-mapper-persistent-data-0.8.5-3.el7_9.2.x86_64
+--> Processing Dependency: libaio.so.1()(64bit) for package:device-mapper-persistent-data-0.8.5-3.el7_9.2.x86_64
+---> Package lvm2.x86_64 7:2.02.187-6.el7_9.5 will be installed
+--> Processing Dependency: lvm2-libs = 7:2.02.187-6.el7_9.5 for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: liblvm2app.so.2.2(Base)(64bit) for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: libdevmapper-event.so.1.02(Base)(64bit) for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: liblvm2app.so.2.2()(64bit) for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Processing Dependency: libdevmapper-event.so.1.02()(64bit) for package: 7:lvm2-2.02.187-6.el7_9.5.x86_64
+--> Running transaction check
+---> Package device-mapper-event-libs.x86_64 7:1.02.170-6.el7_9.5 will be installed
+---> Package libaio.x86_64 0:0.3.109-13.el7 will be installed
+---> Package lvm2-libs.x86_64 7:2.02.187-6.el7_9.5 will be installed
+--> Processing Dependency: device-mapper-event = 7:1.02.170-6.el7_9.5 for package: 7:lvm2-libs-2.02.187-6.el7_9.5.x86_64
+--> Running transaction check
+---> Package device-mapper-event.x86_64 7:1.02.170-6.el7_9.5will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=============================================================
+ Package           Arch   Version              Repository
+                                                        Size
+=============================================================
+Installing:
+ device-mapper-persistent-data
+                   x86_64 0.8.5-3.el7_9.2      updates 423 k
+ lvm2              x86_64 7:2.02.187-6.el7_9.5 updates 1.3 M
+Installing for dependencies:
+ device-mapper-event
+                   x86_64 7:1.02.170-6.el7_9.5 updates 192 k
+ device-mapper-event-libs
+                   x86_64 7:1.02.170-6.el7_9.5 updates 192 k
+ libaio            x86_64 0.3.109-13.el7       base     24 k
+ lvm2-libs         x86_64 7:2.02.187-6.el7_9.5 updates 1.1 M
+
+Transaction Summary
+=============================================================
+Install  2 Packages (+4 Dependent packages)
+
+Total download size: 3.2 M
+Installed size: 8.1 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/6): device-mapper-event-1.02.170-6.e | 192 kB   00:00
+(2/6): device-mapper-persistent-data-0. | 423 kB   00:00
+(3/6): device-mapper-event-libs-1.02.17 | 192 kB   00:00
+(4/6): lvm2-2.02.187-6.el7_9.5.x86_64.r | 1.3 MB   00:00
+(5/6): lvm2-libs-2.02.187-6.el7_9.5.x86 | 1.1 MB   00:00
+(6/6): libaio-0.3.109-13.el7.x86_64.rpm |  24 kB   00:00
+-------------------------------------------------------------
+Total                           5.3 MB/s | 3.2 MB  00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : 7:device-mapper-event-libs-1.02.170-6.e   1/6
+  Installing : libaio-0.3.109-13.el7.x86_64              2/6
+  Installing : device-mapper-persistent-data-0.8.5-3.e   3/6
+  Installing : 7:device-mapper-event-1.02.170-6.el7_9.   4/6
+  Installing : 7:lvm2-libs-2.02.187-6.el7_9.5.x86_64     5/6
+  Installing : 7:lvm2-2.02.187-6.el7_9.5.x86_64          6/6
+  Verifying  : 7:device-mapper-event-1.02.170-6.el7_9.   1/6
+  Verifying  : 7:lvm2-libs-2.02.187-6.el7_9.5.x86_64     2/6
+  Verifying  : device-mapper-persistent-data-0.8.5-3.e   3/6
+  Verifying  : libaio-0.3.109-13.el7.x86_64              4/6
+  Verifying  : 7:lvm2-2.02.187-6.el7_9.5.x86_64          5/6
+  Verifying  : 7:device-mapper-event-libs-1.02.170-6.e   6/6
+
+Installed:
+  device-mapper-persistent-data.x86_64 0:0.8.5-3.el7_9.2
+  lvm2.x86_64 7:2.02.187-6.el7_9.5
+
+Dependency Installed:
+  device-mapper-event.x86_64 7:1.02.170-6.el7_9.5
+  device-mapper-event-libs.x86_64 7:1.02.170-6.el7_9.5
+  libaio.x86_64 0:0.3.109-13.el7
+  lvm2-libs.x86_64 7:2.02.187-6.el7_9.5
+
+Complete!
+[cloud_user@ip-10-0-1-100 ~]$ rpm -qa | grep lvm2
+lvm2-libs-2.02.187-6.el7_9.5.x86_64
+lvm2-2.02.187-6.el7_9.5.x86_64
+[cloud_user@ip-10-0-1-100 ~]$ rpm -qa | grep device-persistent-mapper-data
+[cloud_user@ip-10-0-1-100 ~]$ sudo yum install -y yum-utils device-mapper-persistent-data
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: download.cf.centos.org
+ * extras: download.cf.centos.org
+ * updates: download.cf.centos.org
+Package yum-utils-1.1.31-54.el7_8.noarch already installed and latest version
+Package device-mapper-persistent-data-0.8.5-3.el7_9.2.x86_64already installed and latest version
+Nothing to do
+[cloud_user@ip-10-0-1-100 ~]$ sudo yum-config-manager --ad-repo https://download.docker.com/linux/docker-ce.repo
+Loaded plugins: fastestmirror
+Usage: yum-config-manager [options] [section ...]
+
+Command line error: no such option: --ad-repo
+[cloud_user@ip-10-0-1-100 ~]$ ^C
+[cloud_user@ip-10-0-1-100 ~]$ sudo yum-config-manager --add-repo  https://download.docker.com/linux/centos/docker-ce.repo
+Loaded plugins: fastestmirror
+adding repo from: https://download.docker.com/linux/centos/docker-ce.repo
+grabbing file https://download.docker.com/linux/centos/docker-ce.repo to /etc/yum.repos.d/docker-ce.repo
+repo saved to /etc/yum.repos.d/docker-ce.repo
+[cloud_user@ip-10-0-1-100 ~]$ sudo yum install docker-ce
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: download.cf.centos.org
+ * extras: download.cf.centos.org
+ * updates: download.cf.centos.org
+docker-ce-stable                      | 3.5 kB     00:00
+(1/2): docker-ce-stable/7/x86_64/update |   55 B   00:00
+(2/2): docker-ce-stable/7/x86_64/primar |  71 kB   00:00
+Resolving Dependencies
+--> Running transaction check
+---> Package docker-ce.x86_64 3:20.10.12-3.el7 will be installed
+--> Processing Dependency: container-selinux >= 2:2.74 for package: 3:docker-ce-20.10.12-3.el7.x86_64
+--> Processing Dependency: containerd.io >= 1.4.1 for package: 3:docker-ce-20.10.12-3.el7.x86_64
+--> Processing Dependency: docker-ce-cli for package: 3:docker-ce-20.10.12-3.el7.x86_64
+--> Processing Dependency: docker-ce-rootless-extras for package: 3:docker-ce-20.10.12-3.el7.x86_64
+--> Running transaction check
+---> Package container-selinux.noarch 2:2.119.2-1.911c772.el7_8 will be installed
+---> Package containerd.io.x86_64 0:1.4.13-3.1.el7 will be installed
+---> Package docker-ce-cli.x86_64 1:20.10.12-3.el7 will be installed
+--> Processing Dependency: docker-scan-plugin(x86-64) for package: 1:docker-ce-cli-20.10.12-3.el7.x86_64
+---> Package docker-ce-rootless-extras.x86_64 0:20.10.12-3.el7 will be installed
+--> Processing Dependency: fuse-overlayfs >= 0.7 for package: docker-ce-rootless-extras-20.10.12-3.el7.x86_64
+--> Processing Dependency: slirp4netns >= 0.4 for package: docker-ce-rootless-extras-20.10.12-3.el7.x86_64
+--> Running transaction check
+---> Package docker-scan-plugin.x86_64 0:0.12.0-3.el7 will be installed
+---> Package fuse-overlayfs.x86_64 0:0.7.2-6.el7_8 will be installed
+--> Processing Dependency: libfuse3.so.3(FUSE_3.2)(64bit) for package: fuse-overlayfs-0.7.2-6.el7_8.x86_64
+--> Processing Dependency: libfuse3.so.3(FUSE_3.0)(64bit) for package: fuse-overlayfs-0.7.2-6.el7_8.x86_64
+--> Processing Dependency: libfuse3.so.3()(64bit) for package: fuse-overlayfs-0.7.2-6.el7_8.x86_64
+---> Package slirp4netns.x86_64 0:0.4.3-4.el7_8 will be installed
+--> Running transaction check
+---> Package fuse3-libs.x86_64 0:3.6.1-4.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=============================================================
+ Package        Arch   Version        Repository        Size
+=============================================================
+Installing:
+ docker-ce      x86_64 3:20.10.12-3.el7
+                                      docker-ce-stable  23 M
+Installing for dependencies:
+ container-selinux
+                noarch 2:2.119.2-1.911c772.el7_8
+                                      extras            40 k
+ containerd.io  x86_64 1.4.13-3.1.el7 docker-ce-stable  28 M
+ docker-ce-cli  x86_64 1:20.10.12-3.el7
+                                      docker-ce-stable  30 M
+ docker-ce-rootless-extras
+                x86_64 20.10.12-3.el7 docker-ce-stable 8.0 M
+ docker-scan-plugin
+                x86_64 0.12.0-3.el7   docker-ce-stable 3.7 M
+ fuse-overlayfs x86_64 0.7.2-6.el7_8  extras            54 k
+ fuse3-libs     x86_64 3.6.1-4.el7    extras            82 k
+ slirp4netns    x86_64 0.4.3-4.el7_8  extras            81 k
+
+Transaction Summary
+=============================================================
+Install  1 Package (+8 Dependent packages)
+
+Total download size: 94 M
+Installed size: 381 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/9): container-selinux-2.119.2-1.911c |  40 kB   00:00
+warning: /var/cache/yum/x86_64/7/docker-ce-stable/packages/docker-ce-20.10.12-3.el7.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 621e9f35: NOKEY
+Public key for docker-ce-20.10.12-3.el7.x86_64.rpm is not installed
+(2/9): docker-ce-20.10.12-3.el7.x86_64. |  23 MB   00:00
+(3/9): containerd.io-1.4.13-3.1.el7.x86 |  28 MB   00:01
+(4/9): docker-ce-cli-20.10.12-3.el7.x86 |  30 MB   00:00
+(5/9): fuse-overlayfs-0.7.2-6.el7_8.x86 |  54 kB   00:00
+(6/9): slirp4netns-0.4.3-4.el7_8.x86_64 |  81 kB   00:00
+(7/9): docker-ce-rootless-extras-20.10. | 8.0 MB   00:00
+(8/9): docker-scan-plugin-0.12.0-3.el7. | 3.7 MB   00:00
+(9/9): fuse3-libs-3.6.1-4.el7.x86_64.rp |  82 kB   00:00
+-------------------------------------------------------------
+Total                            68 MB/s |  94 MB  00:01
+Retrieving key from https://download.docker.com/linux/centos/gpg
+Importing GPG key 0x621E9F35:
+ Userid     : "Docker Release (CE rpm) <docker@docker.com>"
+ Fingerprint: 060a 61c5 1b55 8a7f 742b 77aa c52f eb6b 621e 9f35
+ From       : https://download.docker.com/linux/centos/gpg
+Is this ok [y/N]: y
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : docker-scan-plugin-0.12.0-3.el7.x86_64    1/9
+  Installing : 1:docker-ce-cli-20.10.12-3.el7.x86_64     2/9
+  Installing : 2:container-selinux-2.119.2-1.911c772.e   3/9
+  Installing : containerd.io-1.4.13-3.1.el7.x86_64       4/9
+  Installing : slirp4netns-0.4.3-4.el7_8.x86_64          5/9
+  Installing : fuse3-libs-3.6.1-4.el7.x86_64             6/9
+  Installing : fuse-overlayfs-0.7.2-6.el7_8.x86_64       7/9
+  Installing : docker-ce-rootless-extras-20.10.12-3.el   8/9
+  Installing : 3:docker-ce-20.10.12-3.el7.x86_64         9/9
+  Verifying  : containerd.io-1.4.13-3.1.el7.x86_64       1/9
+  Verifying  : fuse3-libs-3.6.1-4.el7.x86_64             2/9
+  Verifying  : 1:docker-ce-cli-20.10.12-3.el7.x86_64     3/9
+  Verifying  : fuse-overlayfs-0.7.2-6.el7_8.x86_64       4/9
+  Verifying  : docker-scan-plugin-0.12.0-3.el7.x86_64    5/9
+  Verifying  : slirp4netns-0.4.3-4.el7_8.x86_64          6/9
+  Verifying  : 2:container-selinux-2.119.2-1.911c772.e   7/9
+  Verifying  : docker-ce-rootless-extras-20.10.12-3.el   8/9
+  Verifying  : 3:docker-ce-20.10.12-3.el7.x86_64         9/9
+
+Installed:
+  docker-ce.x86_64 3:20.10.12-3.el7
+
+Dependency Installed:
+  container-selinux.noarch 2:2.119.2-1.911c772.el7_8
+  containerd.io.x86_64 0:1.4.13-3.1.el7
+  docker-ce-cli.x86_64 1:20.10.12-3.el7
+  docker-ce-rootless-extras.x86_64 0:20.10.12-3.el7
+  docker-scan-plugin.x86_64 0:0.12.0-3.el7
+  fuse-overlayfs.x86_64 0:0.7.2-6.el7_8
+  fuse3-libs.x86_64 0:3.6.1-4.el7
+  slirp4netns.x86_64 0:0.4.3-4.el7_8
+
+Complete!
+[cloud_user@ip-10-0-1-100 ~]$ sudo systemctl enable docker
+Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+[cloud_user@ip-10-0-1-100 ~]$ sudo systemctl start docker
+[cloud_user@ip-10-0-1-100 ~]$ sudo usermod -a -G docker cloud_user
+[cloud_user@ip-10-0-1-100 ~]$ exit
+logout
+/ $ ssh cloud_user@107.20.84.39
+cloud_user@107.20.84.39's password:
+[cloud_user@ip-10-0-1-100 ~]$ docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+2db29710123e: Pull complete
+Digest: sha256:97a379f4f88575512824f3b352bc03cd75e239179eea0fecc38e597b2209f49a
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+[cloud_user@ip-10-0-1-100 ~]$ docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
+6b3e975dcbf8   hello-world   "/hello"   7 seconds ago   Exited (0) 6 seconds ago             ecstatic_mclaren
+[cloud_user@ip-10-0-1-100 ~]$ ^C

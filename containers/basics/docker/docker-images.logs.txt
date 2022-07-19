@@ -1,0 +1,63 @@
+[cloud_user@ip-10-0-1-208 ~]$ sudo docker image pull alpine:latestlatest: Pulling from library/alpine59bf1c3509f3: Pull completeDigest: sha256:21a3deaa0d32a8057914f36584b5288d2e5ecc984380bc0118285c70fa8c9300
+Status: Downloaded newer image for alpine:latest
+docker.io/library/alpine:latest
+[cloud_user@ip-10-0-1-208 ~]$ sudo docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+alpine       latest    c059bfaa849c   3 months ago   5.59MB
+[cloud_user@ip-10-0-1-208 ~]$ sudo docker pull httpd:latest
+latest: Pulling from library/httpd
+f7a1c6dad281: Pull complete
+f18d7c6e023b: Pull complete
+bf06bcf4b8a8: Pull complete
+4566427976c4: Pull complete
+70a943c2d5bb: Pull complete
+Digest: sha256:b7907df5e39a98a087dec5e191e6624854844bc8d0202307428dd90b38c10140
+Status: Downloaded newer image for httpd:latest
+docker.io/library/httpd:latest
+[cloud_user@ip-10-0-1-208 ~]$ docker pull nginx:1.15
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/images/create?fromImage=nginx&tag=1.15": dial unix /var/run/docker.sock: connect: permission denied
+[cloud_user@ip-10-0-1-208 ~]$ sudo docker pull nginx:1.15
+1.15: Pulling from library/nginx
+743f2d6c1f65: Pull complete
+6bfc4ec4420a: Pull complete
+688a776db95f: Pull complete
+Digest: sha256:23b4dcdf0d34d4a129755fc6f52e1c6e23bb34ea011b315d87e193033bcd1b68
+Status: Downloaded newer image for nginx:1.15
+docker.io/library/nginx:1.15
+[cloud_user@ip-10-0-1-208 ~]$ sudo docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+httpd        latest    faed93b28859   5 days ago     144MB
+alpine       latest    c059bfaa849c   3 months ago   5.59MB
+nginx        1.15      53f3fd8007f7   2 years ago    109MB
+[cloud_user@ip-10-0-1-208 ~]$ sudo docker history httpd
+IMAGE          CREATED      CREATED BY               SIZE      COMMENT
+faed93b28859   5 days ago   /bin/sh -c #(nop)  CMD ["httpd-foreground"]     0B
+<missing>      5 days ago   /bin/sh -c #(nop)  EXPOSE 80               0B
+<missing>      5 days ago   /bin/sh -c #(nop) COPY file:c432ff61c4993ecd…   138B
+<missing>      5 days ago   /bin/sh -c #(nop)  STOPSIGNAL SIGWINCH          0B
+<missing>      5 days ago   /bin/sh -c set -eux;   savedAptMark="$(apt-m…   60.5MB
+<missing>      5 days ago   /bin/sh -c #(nop)  ENV HTTPD_PATCHES=           0B
+<missing>      5 days ago   /bin/sh -c #(nop)  ENV HTTPD_SHA256=0127f7dc…   0B
+<missing>      5 days ago   /bin/sh -c #(nop)  ENV HTTPD_VERSION=2.4.52     0B
+<missing>      5 days ago   /bin/sh -c set -eux;  apt-get update;  apt-g…   2.63MB
+<missing>      5 days ago   /bin/sh -c #(nop) WORKDIR /usr/local/apache2    0B
+<missing>      5 days ago   /bin/sh -c mkdir -p "$HTTPD_PREFIX"  && chow…   0B
+<missing>      5 days ago   /bin/sh -c #(nop)  ENV PATH=/usr/local/apach…   0B
+<missing>      5 days ago   /bin/sh -c #(nop)  ENV HTTPD_PREFIX=/usr/loc…   0B
+<missing>      5 days ago   /bin/sh -c #(nop)  CMD ["bash"]               0B
+<missing>      5 days ago   /bin/sh -c #(nop) ADD file:d48a85028743f16ed…   80.4MB
+[cloud_user@ip-10-0-1-208 ~]$ sudo docker history nginx
+Error response from daemon: No such image: nginx:latest
+[cloud_user@ip-10-0-1-208 ~]$ sudo docker history nginx:1.15
+IMAGE          CREATED       CREATED BY                SIZE      COMMENT
+53f3fd8007f7   2 years ago   /bin/sh -c #(nop)  CMD ["nginx""-g" "daemon…   0B
+<missing>      2 years ago   /bin/sh -c #(nop)  STOPSIGNAL SIGTERM           0B
+<missing>      2 years ago   /bin/sh -c #(nop)  EXPOSE 80                0B
+<missing>      2 years ago   /bin/sh -c ln -sf /dev/stdout /var/log/nginx…   22B
+<missing>      2 years ago   /bin/sh -c set -x  && apt-get update  && apt…   54.1MB
+<missing>      2 years ago   /bin/sh -c #(nop)  ENV NJS_VERSION=1.15.12.0…   0B
+<missing>      2 years ago   /bin/sh -c #(nop)  ENV NGINX_VERSION=1.15.12…   0B
+<missing>      2 years ago   /bin/sh -c #(nop)  LABEL maintainer=NGINX Do…   0B
+<missing>      2 years ago   /bin/sh -c #(nop)  CMD ["bash"]                0B
+<missing>      2 years ago   /bin/sh -c #(nop) ADD file:fcb9328ea4c115670…   55.3MB
+[cloud_user@ip-10-0-1-208 ~]$
