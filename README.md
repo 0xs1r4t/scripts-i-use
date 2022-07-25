@@ -1,5 +1,5 @@
 ```bash
-.
+│
 ├── bashrc.sh
 ├── containers
 │   ├── basics
@@ -25,13 +25,12 @@
 ├── do-not-commit
 │   ├── mongodb-intro.sh
 │   └── pass-conf.txt
-├── file-management.sh
-├── gpg-keys.sh
 ├── README.md
-├── search-pkg.sh
-└── using-pass-as-a-passwd-manager.sh
+└── special
+    ├── file-management.sh
+    ├── gpg-keys.sh
+    ├── search-pkg.sh
+    └── using-pass-as-a-passwd-manager.sh
 
-8 directories, 22 files
+9 directories, 22 files
 ```
-
-9 directories, 20 files
