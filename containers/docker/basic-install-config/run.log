@@ -1,0 +1,163 @@
+idk [22:59] 🌈 91852 ~ docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+idk [22:59] 🌈 91852 ~ docker run -it ubuntu bash
+root@16ab589148e6:/# echo "hello, world!"
+hello, world!
+root@16ab589148e6:/# ps
+  PID TTY          TIME CMD
+    1 pts/0    00:00:00 bash
+    9 pts/0    00:00:00 ps
+root@16ab589148e6:/# pwd
+/
+root@16ab589148e6:/# ls -lFha
+total 56K
+drwxr-xr-x   1 root root 4.0K Jul 20 17:29 ./
+drwxr-xr-x   1 root root 4.0K Jul 20 17:29 ../
+-rwxr-xr-x   1 root root    0 Jul 20 17:29 .dockerenv*
+lrwxrwxrwx   1 root root    7 May 31 15:42 bin -> usr/bin/
+drwxr-xr-x   2 root root 4.0K Apr 18 10:28 boot/
+drwxr-xr-x   5 root root  360 Jul 20 17:29 dev/
+drwxr-xr-x   1 root root 4.0K Jul 20 17:29 etc/
+drwxr-xr-x   2 root root 4.0K Apr 18 10:28 home/
+lrwxrwxrwx   1 root root    7 May 31 15:42 lib -> usr/lib/
+lrwxrwxrwx   1 root root    9 May 31 15:42 lib32 -> usr/lib32/
+lrwxrwxrwx   1 root root    9 May 31 15:42 lib64 -> usr/lib64/
+lrwxrwxrwx   1 root root   10 May 31 15:42 libx32 -> usr/libx32/
+drwxr-xr-x   2 root root 4.0K May 31 15:42 media/
+drwxr-xr-x   2 root root 4.0K May 31 15:42 mnt/
+drwxr-xr-x   2 root root 4.0K May 31 15:42 opt/
+dr-xr-xr-x 296 root root    0 Jul 20 17:29 proc/
+drwx------   2 root root 4.0K May 31 15:45 root/
+drwxr-xr-x   5 root root 4.0K May 31 15:45 run/
+lrwxrwxrwx   1 root root    8 May 31 15:42 sbin -> usr/sbin/
+drwxr-xr-x   2 root root 4.0K May 31 15:42 srv/
+dr-xr-xr-x  11 root root    0 Jul 20 17:29 sys/
+drwxrwxrwt   2 root root 4.0K May 31 15:45 tmp/
+drwxr-xr-x  14 root root 4.0K May 31 15:42 usr/
+drwxr-xr-x  11 root root 4.0K May 31 15:45 var/
+root@16ab589148e6:/# exit
+exit
+idk [23:00] 🌈 91852 ~ docker run -it ubuntu bash
+root@e9507f8f07ae:/# cat .dockerenv
+root@e9507f8f07ae:/# man cat
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
+
+To restore this content, including manpages, you can run the 'unminimize'
+command. You will still need to ensure the 'man-db' package is installed.
+root@e9507f8f07ae:/# cd usr/
+root@e9507f8f07ae:/usr# ls -la
+total 64
+drwxr-xr-x 14 root root  4096 May 31 15:42 .
+drwxr-xr-x  1 root root  4096 Jul 20 17:30 ..
+drwxr-xr-x  2 root root 12288 May 31 15:45 bin
+drwxr-xr-x  2 root root  4096 Apr 18 10:28 games
+drwxr-xr-x  2 root root  4096 Apr 18 10:28 include
+drwxr-xr-x 15 root root  4096 May 31 15:45 lib
+drwxr-xr-x  2 root root  4096 May 31 15:42 lib32
+drwxr-xr-x  2 root root  4096 May 31 15:43 lib64
+drwxr-xr-x  4 root root  4096 May 31 15:42 libexec
+drwxr-xr-x  2 root root  4096 May 31 15:42 libx32
+drwxr-xr-x 10 root root  4096 May 31 15:42 local
+drwxr-xr-x  2 root root  4096 May 31 15:45 sbin
+drwxr-xr-x 33 root root  4096 May 31 15:42 share
+drwxr-xr-x  2 root root  4096 Apr 18 10:28 src
+root@e9507f8f07ae:/usr# cd lib
+root@e9507f8f07ae:/usr/lib# ls -la
+total 64
+drwxr-xr-x 15 root root 4096 May 31 15:45 .
+drwxr-xr-x 14 root root 4096 May 31 15:42 ..
+drwxr-xr-x  5 root root 4096 May 31 15:42 apt
+drwxr-xr-x  3 root root 4096 May 31 15:42 dpkg
+drwxr-xr-x  2 root root 4096 May 31 15:45 init
+drwxr-xr-x  3 root root 4096 Mar  4 02:54 locale
+drwxr-xr-x  3 root root 4096 May 31 15:45 lsb
+drwxr-xr-x  3 root root 4096 Aug 29  2021 mime
+-rw-r--r--  1 root root  382 Apr 22 14:34 os-release
+drwxr-xr-x  2 root root 4096 May 31 15:45 sysctl.d
+drwxr-xr-x  3 root root 4096 Apr 18 10:28 systemd
+drwxr-xr-x 16 root root 4096 Jan 17  2022 terminfo
+drwxr-xr-x  2 root root 4096 May 31 15:45 tmpfiles.d
+drwxr-xr-x  3 root root 4096 May 31 15:45 udev
+drwxr-xr-x  3 root root 4096 May 31 15:45 usrmerge
+drwxr-xr-x 10 root root 4096 May 31 15:45 x86_64-linux-gnu
+root@e9507f8f07ae:/usr/lib# cd ../..
+root@e9507f8f07ae:/# exit
+exit
+idk [23:01] 🌈 91852 ~ docker run -d --name nginx --restart on-failure -p 8080:80 --memory 512M --memory-reservation 256M nginx
+6490dba915129af89073ff4dedcaff308570df7fc3d77ab93b820d25936e2f31
+idk [23:01] 🌈 91852 ~ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                  NAMES
+6490dba91512   nginx     "/docker-entrypoint.…"   7 seconds ago   Up 5 seconds   0.0.0.0:8080->80/tcp   nginx
+idk [23:01] 🌈 91852 ~ curl localhost:8080
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+idk [23:01] 🌈 91852 ~ links http://localhost:8080
+                                                                                                               Welcome to nginx!                                                         Welcome to nginx!                                                                                                                                                                                            If you see this page, the nginx web server is successfully installed and working. Further configuration is required.                                                                                                                                              For online documentation and support please refer to nginx.org.                                                                  Commercial support is available at nginx.com.                                                                                                                                                                                                                     Thank you for using nginx.                                                                                                                                                                                                                                     
+                                             +------------ Exit Links -------------+                                                                                          |                                     |                                                                                          |  Do you really want to exit Links?  |                                                                                          |                                     |                                                                                          |           [ Yes ]  [ No ]           |                                                                                          +-------------------------------------+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       http://nginx.org/
+
+
+idk [23:02] 🌈 91852 ~ docker ps -a
+CONTAINER ID   IMAGE         COMMAND                  CREATED              STATUS                          PORTS
+ NAMES
+6490dba91512   nginx         "/docker-entrypoint.…"   About a minute ago   Up About a minute               0.0.0.0:8080->80/tcp   nginx
+e9507f8f07ae   ubuntu        "bash"                   2 minutes ago        Exited (0) About a minute ago
+ hopeful_darwin
+16ab589148e6   ubuntu        "bash"                   2 minutes ago        Exited (0) 2 minutes ago
+ infallible_hertz
+0904d9b7dd46   hello-world   "/hello"                 2 minutes ago        Exited (0) 2 minutes ago
+ awesome_shannon
+idk [23:02] 🌈 91852 ~ docker container stop nginx
+nginx
+idk [23:02] 🌈 91852 ~ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+idk [23:02] 🌈 91852 ~ docker rm hopeful_darwin infallible_hertz awesome_shannon # removing useless containers
+hopeful_darwin
+infallible_hertz
+awesome_shannon
+idk [23:03] 🌈 91852 ~ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS                      PORTS     NAMES
+6490dba91512   nginx     "/docker-entrypoint.…"   About a minute ago   Exited (0) 39 seconds ago             nginx
+idk [23:03] 🌈 91852 ~

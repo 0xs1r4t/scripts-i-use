@@ -5,11 +5,6 @@
 │   ├── basics
 │   │   ├── automation
 │   │   │   └── docker-swarms.sh
-│   │   ├── docker
-│   │   │   ├── docker-images.logs.txt
-│   │   │   ├── docker-images.sh
-│   │   │   ├── docker-install.logs.txt
-│   │   │   └── install-docker.txt
 │   │   ├── essentials
 │   │   │   ├── chroot-jail.sh
 │   │   │   ├── chroot.logs.txt
@@ -19,7 +14,13 @@
 │   │       ├── lxc-lxd.logs.txt
 │   │       └── lxc-lxd.sh
 │   └── docker
-│       └── storage-driver
+│       └── basic-install-config
+│           ├── images.log
+│           ├── images.sh
+│           ├── installation-process.log
+│           ├── install-docker.log
+│           ├── no-sudo.sh
+│           ├── run.log
 │           └── select-storage-driver.sh
 ├── do-not-commit
 │   ├── mongodb-intro.sh
@@ -29,6 +30,8 @@
 ├── README.md
 ├── search-pkg.sh
 └── using-pass-as-a-passwd-manager.sh
+
+8 directories, 22 files
 ```
 
 9 directories, 20 files

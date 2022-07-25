@@ -4,5 +4,4 @@ do-not-commit/
 # junk files
 
 *~
-*.un~
 *.swp
