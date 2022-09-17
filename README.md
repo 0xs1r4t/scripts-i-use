@@ -1,7 +1,7 @@
 ```bash
 │
 ├── bashrc.sh
-├── containers
+├── containers-and-clusters
 │   ├── basics
 │   │   ├── automation
 │   │   │   └── docker-swarms.sh
@@ -13,18 +13,28 @@
 │   │   └── lxc-lxd
 │   │       ├── lxc-lxd.logs.txt
 │   │       └── lxc-lxd.sh
-│   └── docker
-│       └── basic-install-config
-│           ├── images.log
-│           ├── images.sh
-│           ├── installation-process.log
-│           ├── install-docker.log
-│           ├── no-sudo.sh
-│           ├── run.log
-│           └── select-storage-driver.sh
+│   ├── docker
+│   │   └── basic-install-config
+│   │       ├── images.log
+│   │       ├── images.sh
+│   │       ├── installation-process.log
+│   │       ├── install-docker.log
+│   │       ├── no-sudo.sh
+│   │       ├── run.log
+│   │       └── select-storage-driver.sh
+│   └── kubernetes
+│       └── basic-config-install
+│           ├── ipv4-err.sh.log
+│           ├── k8s-control-plane.sh
+│           ├── k8s-worker-node1.sh
+│           └── setup.md
 ├── do-not-commit
 │   ├── mongodb-intro.sh
+│   ├── mousemove.ps1
+│   ├── mousemove.ps1~
 │   └── pass-conf.txt
+├── ffmpeg
+│   └── gif-to-webm.sh
 ├── README.md
 └── special
     ├── file-management.sh
@@ -32,5 +42,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-9 directories, 22 files
+12 directories, 29 files
 ```
