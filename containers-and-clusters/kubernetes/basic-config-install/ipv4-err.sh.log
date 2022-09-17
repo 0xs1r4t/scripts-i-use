@@ -1,0 +1,12 @@
+[ERROR FileContent --proc-sys-net-ipv4-ip_forward] : /proc/sys/net/ipv4/ip_forward contents not set to 1
+
+########## SOLUTION ###########
+
+echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
+
+OR
+
+sudo vim /etc/sysctl.conf
+	# IPv4 Forwarding
+	net.ipv4.ip_forward = 1
+sudo sysctl -p
