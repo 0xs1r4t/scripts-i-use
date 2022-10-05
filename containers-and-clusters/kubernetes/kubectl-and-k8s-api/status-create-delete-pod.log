@@ -1,0 +1,299 @@
+$ ssh cloud_user@44.198.161.151
+
+Host '44.198.161.151' is not in the trusted hosts file.
+(ssh-ed25519 fingerprint sha1!! 49:10:e3:92:4a:ca:57:2e:c2:ff:59:f3:e9:f7:ff:b3:0b:20:8b:cd)
+Do you want to continue connecting? (y/n) y
+cloud_user@44.198.161.151's password:
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.13.0-1025-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Wed Oct  5 17:26:26 UTC 2022
+
+  System load:  0.33              Processes:              158
+  Usage of /:   76.7% of 7.69GB   Users logged in:        1
+  Memory usage: 25%               IPv4 address for ens5:  10.0.1.101
+  Swap usage:   0%                IPv4 address for tunl0: 192.168.175.0
+
+ * Ubuntu Pro delivers the most comprehensive open source security and
+   compliance features.
+
+   https://ubuntu.com/aws/pro
+
+0 updates can be applied immediately.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '22.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+cloud_user@k8s-control:~$ kubectl get nodes
+NAME          STATUS   ROLES           AGE    VERSION
+k8s-control   Ready    control-plane   165m   v1.24.0
+k8s-worker1   Ready    <none>          164m   v1.24.0
+k8s-worker2   Ready    <none>          165m   v1.24.0
+
+cloud_user@k8s-control:~$ kubectl get nodes
+NAME          STATUS   ROLES           AGE    VERSION
+k8s-control   Ready    control-plane   164m   v1.24.0
+k8s-worker1   Ready    <none>          164m   v1.24.0
+k8s-worker2   Ready    <none>          164m   v1.24.0
+cloud_user@k8s-control:~$ kubectl describe nodes
+Name:               k8s-control
+Roles:              control-plane
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=k8s-control
+                    kubernetes.io/os=linux
+                    node-role.kubernetes.io/control-plane=
+                    node.kubernetes.io/exclude-from-external-load-balancers=
+Annotations:        kubeadm.alpha.kubernetes.io/cri-socket: unix:///var/run/containerd/containerd.sock
+                    node.alpha.kubernetes.io/ttl: 0
+                    projectcalico.org/IPv4Address: 10.0.1.101/24
+                    projectcalico.org/IPv4IPIPTunnelAddr: 192.168.175.0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Wed, 05 Oct 2022 14:42:34 +0000
+Taints:             node-role.kubernetes.io/control-plane:NoSchedule
+                    node-role.kubernetes.io/master:NoSchedule
+Unschedulable:      false
+Lease:
+  HolderIdentity:  k8s-control
+  AcquireTime:     <unset>
+  RenewTime:       Wed, 05 Oct 2022 17:27:42 +0000
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason          Message
+  ----                 ------  -----------------                 ------------------                ------          -------
+  NetworkUnavailable   False   Wed, 05 Oct 2022 14:44:07 +0000   Wed, 05 Oct 2022 14:44:07 +0000   CalicoIsUp          Calico is running on this node
+  MemoryPressure       False   Wed, 05 Oct 2022 17:27:24 +0000   Wed, 05 Oct 2022 14:42:34 +0000   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Wed, 05 Oct 2022 17:27:24 +0000   Wed, 05 Oct 2022 14:42:34 +0000   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Wed, 05 Oct 2022 17:27:24 +0000   Wed, 05 Oct 2022 14:42:34 +0000   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Wed, 05 Oct 2022 17:27:24 +0000   Wed, 05 Oct 2022 14:43:47 +0000   KubeletReady          kubelet is posting ready status. AppArmor enabled
+Addresses:
+  InternalIP:  10.0.1.101
+  Hostname:    k8s-control
+Capacity:
+  cpu:                2
+  ephemeral-storage:  8065444Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3958700Ki
+  pods:               110
+Allocatable:
+  cpu:                2
+  ephemeral-storage:  7433113179
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3856300Ki
+  pods:               110
+System Info:
+  Machine ID:                 66a578fcdb9d4303a2948a46329a0e3f
+  System UUID:                ec2522c3-d5eb-8d0c-5e18-2e4376d9b679
+  Boot ID:                    d39de8be-7dee-454f-b3af-e7a5593a9c50
+  Kernel Version:             5.13.0-1025-aws
+  OS Image:                   Ubuntu 20.04.4 LTS
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.5.9
+  Kubelet Version:            v1.24.0
+  Kube-Proxy Version:         v1.24.0
+PodCIDR:                      192.168.0.0/24
+PodCIDRs:                     192.168.0.0/24
+Non-terminated Pods:          (8 in total)
+  Namespace                   Name                                   CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                   ------------  ----------  ---------------  -------------  ---
+  kube-system                 calico-node-f4f8g                      250m (12%)    0 (0%)      0 (0%)           0 (0%)         164m
+  kube-system                 coredns-6d4b75cb6d-f6n5n               100m (5%)     0 (0%)      70Mi (1%)        170Mi(4%)     164m
+  kube-system                 coredns-6d4b75cb6d-wllxb               100m (5%)     0 (0%)      70Mi (1%)        170Mi(4%)     164m
+  kube-system                 etcd-k8s-control                       100m (5%)     0 (0%)      100Mi (2%)       0 (0%)         165m
+  kube-system                 kube-apiserver-k8s-control             250m (12%)    0 (0%)      0 (0%)           0 (0%)         165m
+  kube-system                 kube-controller-manager-k8s-control    200m (10%)    0 (0%)      0 (0%)           0 (0%)         165m
+  kube-system                 kube-proxy-vrmt5                       0 (0%)        0 (0%)      0 (0%)           0 (0%)         164m
+  kube-system                 kube-scheduler-k8s-control             100m (5%)     0 (0%)      0 (0%)           0 (0%)         165m
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests     Limits
+  --------           --------     ------
+  cpu                1100m (55%)  0 (0%)
+  memory             240Mi (6%)   340Mi (9%)
+  ephemeral-storage  0 (0%)       0 (0%)
+  hugepages-1Gi      0 (0%)       0 (0%)
+  hugepages-2Mi      0 (0%)       0 (0%)
+Events:              <none>
+
+
+Name:               k8s-worker1
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=k8s-worker1
+                    kubernetes.io/os=linux
+Annotations:        kubeadm.alpha.kubernetes.io/cri-socket: unix:///var/run/containerd/containerd.sock
+                    node.alpha.kubernetes.io/ttl: 0
+                    projectcalico.org/IPv4Address: 10.0.1.102/24
+                    projectcalico.org/IPv4IPIPTunnelAddr: 192.168.194.64
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Wed, 05 Oct 2022 14:43:04 +0000
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  k8s-worker1
+  AcquireTime:     <unset>
+  RenewTime:       Wed, 05 Oct 2022 17:27:41 +0000
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason          Message
+  ----                 ------  -----------------                 ------------------                ------          -------
+  NetworkUnavailable   False   Wed, 05 Oct 2022 14:48:22 +0000   Wed, 05 Oct 2022 14:48:22 +0000   CalicoIsUp          Calico is running on this node
+  MemoryPressure       False   Wed, 05 Oct 2022 17:26:12 +0000   Wed, 05 Oct 2022 14:43:04 +0000   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Wed, 05 Oct 2022 17:26:12 +0000   Wed, 05 Oct 2022 14:43:04 +0000   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Wed, 05 Oct 2022 17:26:12 +0000   Wed, 05 Oct 2022 14:43:04 +0000   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Wed, 05 Oct 2022 17:26:12 +0000   Wed, 05 Oct 2022 14:46:59 +0000   KubeletReady          kubelet is posting ready status. AppArmor enabled
+Addresses:
+  InternalIP:  10.0.1.102
+  Hostname:    k8s-worker1
+Capacity:
+  cpu:                2
+  ephemeral-storage:  8065444Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3958700Ki
+  pods:               110
+Allocatable:
+  cpu:                2
+  ephemeral-storage:  7433113179
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3856300Ki
+  pods:               110
+System Info:
+  Machine ID:                 66a578fcdb9d4303a2948a46329a0e3f
+  System UUID:                ec22f938-5737-c462-69f0-ad8a21adb9d9
+  Boot ID:                    c93dd45d-02f6-405e-a276-d1e89fe7ae38
+  Kernel Version:             5.13.0-1025-aws
+  OS Image:                   Ubuntu 20.04.4 LTS
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.5.9
+  Kubelet Version:            v1.24.0
+  Kube-Proxy Version:         v1.24.0
+PodCIDR:                      192.168.2.0/24
+PodCIDRs:                     192.168.2.0/24
+Non-terminated Pods:          (2 in total)
+  Namespace                   Name                 CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                 ------------  ----------  ---------------  -------------  ---
+  kube-system                 calico-node-wx6x4    250m (12%)    0 (0%)      0 (0%)           0 (0%)         164m
+  kube-system                 kube-proxy-2xm2q     0 (0%)        0 (0%)      0 (0%)           0 (0%)         164m
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests    Limits
+  --------           --------    ------
+  cpu                250m (12%)  0 (0%)
+  memory             0 (0%)      0 (0%)
+  ephemeral-storage  0 (0%)      0 (0%)
+  hugepages-1Gi      0 (0%)      0 (0%)
+  hugepages-2Mi      0 (0%)      0 (0%)
+Events:              <none>
+
+
+Name:               k8s-worker2
+Roles:              <none>
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=k8s-worker2
+                    kubernetes.io/os=linux
+Annotations:        kubeadm.alpha.kubernetes.io/cri-socket: unix:///var/run/containerd/containerd.sock
+                    node.alpha.kubernetes.io/ttl: 0
+                    projectcalico.org/IPv4Address: 10.0.1.103/24
+                    projectcalico.org/IPv4IPIPTunnelAddr: 192.168.126.0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Wed, 05 Oct 2022 14:42:56 +0000
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  k8s-worker2
+  AcquireTime:     <unset>
+  RenewTime:       Wed, 05 Oct 2022 17:27:42 +0000
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason          Message
+  ----                 ------  -----------------                 ------------------                ------          -------
+  NetworkUnavailable   False   Wed, 05 Oct 2022 14:45:35 +0000   Wed, 05 Oct 2022 14:45:35 +0000   CalicoIsUp          Calico is running on this node
+  MemoryPressure       False   Wed, 05 Oct 2022 17:25:17 +0000   Wed, 05 Oct 2022 14:42:57 +0000   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Wed, 05 Oct 2022 17:25:17 +0000   Wed, 05 Oct 2022 14:42:57 +0000   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Wed, 05 Oct 2022 17:25:17 +0000   Wed, 05 Oct 2022 14:42:57 +0000   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Wed, 05 Oct 2022 17:25:17 +0000   Wed, 05 Oct 2022 14:44:59 +0000   KubeletReady          kubelet is posting ready status. AppArmor enabled
+Addresses:
+  InternalIP:  10.0.1.103
+  Hostname:    k8s-worker2
+Capacity:
+  cpu:                2
+  ephemeral-storage:  8065444Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3958700Ki
+  pods:               110
+Allocatable:
+  cpu:                2
+  ephemeral-storage:  7433113179
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             3856300Ki
+  pods:               110
+System Info:
+  Machine ID:                 66a578fcdb9d4303a2948a46329a0e3f
+  System UUID:                ec2b58f0-65d8-1ae0-cd88-b4b10efcc4eb
+  Boot ID:                    46898850-d7ea-4b6a-a45c-3f5284b86979
+  Kernel Version:             5.13.0-1025-aws
+  OS Image:                   Ubuntu 20.04.4 LTS
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.5.9
+  Kubelet Version:            v1.24.0
+  Kube-Proxy Version:         v1.24.0
+PodCIDR:                      192.168.1.0/24
+PodCIDRs:                     192.168.1.0/24
+Non-terminated Pods:          (6 in total)
+  Namespace                   Name                                        CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                        ------------  ----------  ---------------  -------------  ---
+  default                     auth-microservice                           0 (0%)        0 (0%)      0 (0%)           0 (0%)         164m
+  default                     data-backend                                0 (0%)        0 (0%)      0 (0%)           0 (0%)         164m
+  default                     web-frontend                                0 (0%)        0 (0%)      0 (0%)           0 (0%)         164m
+  kube-system                 calico-kube-controllers-56cdb7c587-nsjvn    0 (0%)        0 (0%)      0 (0%)           0 (0%)         164m
+  kube-system                 calico-node-25n4v                           250m (12%)    0 (0%)      0 (0%)           0 (0%)         164m
+  kube-system                 kube-proxy-p6mbs                            0 (0%)        0 (0%)      0 (0%)           0 (0%)         164m
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests    Limits
+  --------           --------    ------
+  cpu                250m (12%)  0 (0%)
+  memory             0 (0%)      0 (0%)
+  ephemeral-storage  0 (0%)      0 (0%)
+  hugepages-1Gi      0 (0%)      0 (0%)
+  hugepages-2Mi      0 (0%)      0 (0%)
+Events:              <none>
+
+cloud_user@k8s-control:~$ kubectl get pods
+NAME                READY   STATUS             RESTARTS       AGE
+auth-microservice   1/1     Running            0              164m
+data-backend        1/1     Running            0              165m
+web-frontend        0/1     CrashLoopBackOff   36 (82s ago)   165m
+cloud_user@k8s-control:~$ kubectl delete pod web-frontend
+pod "web-frontend" deleted
+cloud_user@k8s-control:~$ vi web-frontend.yml
+cloud_user@k8s-control:~$ kubectl create -f web-frontend.yml
+pod/web-frontend created
+cloud_user@k8s-control:~$ kubectl get pods
+NAME                READY   STATUS              RESTARTS   AGE
+auth-microservice   1/1     Running             0          169m
+data-backend        1/1     Running             0          169m
+web-frontend        0/1     ContainerCreating   0          13s
+cloud_user@k8s-control:~$ kubectl get pod web-frontend
+NAME           READY   STATUS              RESTARTS   AGE
+web-frontend   0/1     ContainerCreating   0          31s
+cloud_user@k8s-control:~$ kubectl get pod web-frontend
+NAME           READY   STATUS    RESTARTS   AGE
+web-frontend   1/1     Running   0          2m40s
