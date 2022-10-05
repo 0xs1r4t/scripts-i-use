@@ -32,3 +32,7 @@ kubectl delete pod web-frontend
 
 vim web-frontend.yml
 kubectl create -f web-frontend.yml --save-config
+
+kubectl get pods -o wide # get more info about all pods
+
+kubectl logs web-frontend # get logs about this pod
