@@ -1,5 +1,5 @@
 ```bash
-│
+./
 ├── bashrc.sh
 ├── containers-and-clusters
 │   ├── basics
@@ -23,11 +23,17 @@
 │   │       ├── run.log
 │   │       └── select-storage-driver.sh
 │   └── kubernetes
-│       └── basic-config-install
-│           ├── ipv4-err.sh.log
-│           ├── k8s-control-plane.sh
-│           ├── k8s-worker-node1.sh
-│           └── setup.md
+│       ├── basic-config-install
+│       │   ├── ipv4-err.sh.log
+│       │   ├── k8s-control-plane.sh
+│       │   ├── k8s-worker-node1.sh
+│       │   └── setup.md
+│       └── kubectl-and-k8s-api
+│           ├── commands.sh
+│           ├── my-service.yml
+│           ├── pods-create-logs.log
+│           ├── status-create-delete-pod.log
+│           └── web-frontend.yml
 ├── do-not-commit
 │   ├── mongodb-intro.sh
 │   ├── mousemove.ps1
@@ -35,12 +41,14 @@
 │   └── pass-conf.txt
 ├── ffmpeg
 │   └── gif-to-webm.sh
+├── output.txt
 ├── README.md
-└── special
-    ├── file-management.sh
-    ├── gpg-keys.sh
-    ├── search-pkg.sh
-    └── using-pass-as-a-passwd-manager.sh
+├── special
+│   ├── file-management.sh
+│   ├── gpg-keys.sh
+│   ├── search-pkg.sh
+│   └── using-pass-as-a-passwd-manager.sh
+└── test.txt
 
-12 directories, 29 files
+13 directories, 36 files
 ```
