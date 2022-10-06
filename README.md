@@ -37,18 +37,15 @@
 ├── do-not-commit
 │   ├── mongodb-intro.sh
 │   ├── mousemove.ps1
-│   ├── mousemove.ps1~
 │   └── pass-conf.txt
 ├── ffmpeg
 │   └── gif-to-webm.sh
-├── output.txt
 ├── README.md
-├── special
-│   ├── file-management.sh
-│   ├── gpg-keys.sh
-│   ├── search-pkg.sh
-│   └── using-pass-as-a-passwd-manager.sh
-└── test.txt
+└── special
+    ├── file-management.sh
+    ├── gpg-keys.sh
+    ├── search-pkg.sh
+    └── using-pass-as-a-passwd-manager.sh
 
-13 directories, 36 files
+13 directories, 33 files
 ```
