@@ -44,8 +44,9 @@
 └── special
     ├── file-management.sh
     ├── gpg-keys.sh
+    ├── pre-commit.sh
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-13 directories, 33 files
+13 directories, 34 files
 ```
