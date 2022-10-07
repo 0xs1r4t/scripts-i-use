@@ -23,6 +23,14 @@
 │   │       ├── run.log
 │   │       └── select-storage-driver.sh
 │   └── kubernetes
+│       ├── app-design-build
+│       │   ├── building-container-images
+│       │   ├── init-containers
+│       │   ├── jobs-cronjobs
+│       │   │   ├── job.sh
+│       │   │   ├── my-job.yml
+│       │   │   └── notes.md
+│       │   └── multi-container-pods
 │       ├── basic-config-install
 │       │   ├── ipv4-err.sh.log
 │       │   ├── k8s-control-plane.sh
@@ -48,5 +56,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-13 directories, 34 files
+18 directories, 37 files
 ```
