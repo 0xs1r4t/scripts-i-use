@@ -27,7 +27,9 @@
 │       │   ├── building-container-images
 │       │   ├── init-containers
 │       │   ├── jobs-cronjobs
+│       │   │   ├── cronjob.sh
 │       │   │   ├── job.sh
+│       │   │   ├── my-cronjob.yml
 │       │   │   ├── my-job.yml
 │       │   │   └── notes.md
 │       │   └── multi-container-pods
@@ -56,5 +58,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-18 directories, 37 files
+18 directories, 39 files
 ```

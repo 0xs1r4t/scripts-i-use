@@ -21,3 +21,8 @@ if it doesn't run successfully the first time
 
 max amount of time k8s allows a job to run
 used to terminate a job if it runs for too long
+
+## Cron Syntax
+
+-  [Cron syntax helper](https://cron.help/)
+-  [Simple examples](https://cron.help/examples)
