@@ -31,7 +31,7 @@
 │       │   │   ├── job.sh
 │       │   │   ├── my-cronjob.yml
 │       │   │   ├── my-job.yml
-│       │   │   └── notes.md
+│       │   │   └── README.md
 │       │   └── multi-container-pods
 │       ├── basic-config-install
 │       │   ├── ipv4-err.sh.log
