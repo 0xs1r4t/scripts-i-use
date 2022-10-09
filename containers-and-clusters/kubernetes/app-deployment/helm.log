@@ -1,0 +1,159 @@
+91852 22:19:00 > ssh cloud_user@54.157.31.183
+The authenticity of host '54.157.31.183 (54.157.31.183)' can't be established.
+ECDSA key fingerprint is SHA256:UZhjpTi1pSUOlc5l1EhzgsxqCjXQCrHsgvrzV9UtY5I.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Failed to add the host to the list of known hosts (/home/idk/.ssh/known_hosts).
+Password:
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.13.0-1025-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun Oct  9 17:21:38 UTC 2022
+
+  System load:  0.98              Processes:              161
+  Usage of /:   75.8% of 7.69GB   Users logged in:        0
+  Memory usage: 25%               IPv4 address for ens5:  10.0.1.101
+  Swap usage:   0%                IPv4 address for tunl0: 192.168.175.0
+
+ * Ubuntu Pro delivers the most comprehensive open source security and
+   compliance features.
+
+   https://ubuntu.com/aws/pro
+
+0 updates can be applied immediately.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.    0    0     0    0     0      0      0 --:--:-- --:-- 85  1700   85  1448    0     0  18805      0 --:--:-- --:--100  1700  100  1700    0     0  21794      0 --:--:-- --:--:-- --:--:-- 21794
+
+cloud_user@k8s-control:~$ sudo apt-get update
+[sudo] password for cloud_user:
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal InRelease
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:5 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:6 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2129 kB]
+Get:4 https://packages.cloud.google.com/apt kubernetes-xenial InRelease [9383 B]
+Get:7 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main Translation-en [376 kB]
+Get:8 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/main amd64 c-n-f Metadata [16.0 kB]
+Get:9 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [1301 kB]
+Get:10 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/restricted Translation-en [185 kB]
+Get:11 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 c-n-f Metadata [584 B]
+Get:12 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [964 kB]
+Get:13 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/universe Translation-en [220 kB]
+Get:14 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/universe amd64 c-n-f Metadata [21.6 kB]
+Get:15 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [24.4 kB]
+Get:16 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/multiverse Translation-en [7316 B]
+Get:17 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 c-n-f Metadata [588 B]
+Get:18 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [45.6 kB]
+Get:19 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-backports/main Translation-en [16.3 kB]
+Get:20 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-backports/main amd64 c-n-f Metadata [1420 B]
+Get:21 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [23.9 kB]
+Get:22 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-backports/universe Translation-en [16.0 kB]
+Get:23 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-backports/universe amd64 c-n-f Metadata [860 B]
+Get:24 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [1752 kB]
+Get:25 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 Packages [60.1 kB]
+Get:26 http://security.ubuntu.com/ubuntu focal-security/main Translation-en [293 kB]
+Get:27 http://security.ubuntu.com/ubuntu focal-security/main amd64 c-n-f Metadata [11.1 kB]
+Get:28 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [1212 kB]
+Get:29 http://security.ubuntu.com/ubuntu focal-security/restricted Translation-en [172 kB]
+Get:30 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 c-n-f Metadata [588 B]
+Get:31 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [735 kB]
+Get:32 http://security.ubuntu.com/ubuntu focal-security/universe Translation-en [135 kB]
+Get:33 http://security.ubuntu.com/ubuntu focal-security/universe amd64 c-n-f Metadata [15.2 kB]
+Get:34 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [22.2 kB]
+Get:35 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 c-n-f Metadata [508 B]
+Fetched 10.1 MB in 2s (4327 kB/s)
+Reading package lists... Done
+cloud_user@k8s-control:~$ curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--100  1700  100  1700    0     0  28813      0 --:--:-- --:--:-- --:--:-- 28813
+OK
+cloud_user@k8s-control:~$ echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.
+d/helm-stable-debian.list
+\deb https://baltocdn.com/helm/stable/debian/ all main
+cloud_user@k8s-control:~$ sudo apt-get update
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal InRelease
+Hit:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu focal-backports InRelease
+Hit:4 http://security.ubuntu.com/ubuntu focal-security InRelease
+Get:6 https://baltocdn.com/helm/stable/debian all InRelease [7652 B]
+Get:5 https://packages.cloud.google.com/apt kubernetes-xenial InRelease [9383 B]
+Get:7 https://baltocdn.com/helm/stable/debian all/main amd64 Packages [2936 B]
+Fetched 20.0 kB in 1s (28.0 kB/s)
+Reading package lists... Done
+cloud_user@k8s-control:~$ sudo apt-get install -y helm
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+  helm
+0 upgraded, 1 newly installed, 0 to remove and 111 not upgraded.
+Need to get 14.0 MB of archives.
+After this operation, 46.4 MB of additional disk space will be used.
+Get:1 https://baltocdn.com/helm/stable/debian all/main amd64 helm amd64 3.9.4-1 [14.0 MB]
+Fetched 14.0 MB in 0s (71.9 MB/s)
+Selecting previously unselected package helm.
+(Reading database ... 127519 files and directories currently installed.)
+Preparing to unpack .../helm_3.9.4-1_amd64.deb ...
+Unpacking helm (3.9.4-1) ...
+Setting up helm (3.9.4-1) ...
+Processing triggers for man-db (2.9.1-1) ...
+cloud_user@k8s-control:~$ helm repo add bitnami https://char
+ts.bitnami.com/bitnami
+"bitnami" has been added to your repositories
+cloud_user@k8s-control:~$ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "bitnami" chart repository
+Update Complete. ⎈Happy Helming!⎈
+cloud_user@k8s-control:~$ helm install -n cert-manager cert-
+manager bitnami/cert-manager
+NAME: cert-manager
+LAST DEPLOYED: Sun Oct  9 17:26:10 2022
+NAMESPACE: cert-manager
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+CHART NAME: cert-manager
+CHART VERSION: 0.8.5
+APP VERSION: 1.9.1
+
+** Please be patient while the chart is being deployed **
+
+In other to begin using certificates, you will need to set up Issuer or ClustersIssuer resources.
+
+https://cert-manager.io/docs/configuration/
+
+To configure a new ingress to automatically provision certificates, you will find some information in the following link:
+
+https://cert-manager.io/docs/usage/ingress/
+cloud_user@k8s-control:~$ kubectl get pods -n cert-manager
+NAME                                       READY   STATUS    RESTARTS   AGE
+cert-manager-cainjector-5dcccffcb5-lptw5   1/1     Running   0          21s
+cert-manager-controller-67dfbf97fc-qdljv   1/1     Running   0          21s
+cert-manager-webhook-68dffd54d7-qnlkj      1/1     Running   0          21s
+cloud_user@k8s-control:~$ kubectl get deployments -n cert-ma
+nager
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+cert-manager-cainjector   1/1     1            1           39s
+cert-manager-controller   1/1     1            1           39s
+cert-manager-webhook      1/1     1            1           39s
+cloud_user@k8s-control:~$ kubectl get svc -n cert-manager
+NAME                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+cert-manager-controller-metrics   ClusterIP   10.104.31.88    <none>        9402/TCP   50s
+cert-manager-webhook              ClusterIP   10.101.44.240   <none>        443/TCP    50s
+cloud_user@k8s-control:~$ exit
+logout
+Connection to 54.157.31.183 closed.
