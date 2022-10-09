@@ -24,7 +24,8 @@
 │   │       └── select-storage-driver.sh
 │   └── kubernetes
 │       ├── app-deployment
-│       │   └── helm.log
+│       │   ├── helm.log
+│       │   └── install-helm.sh
 │       ├── app-design-build
 │       │   ├── building-container-images
 │       │   │   └── build.sh
@@ -61,5 +62,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-19 directories, 41 files
+19 directories, 42 files
 ```
