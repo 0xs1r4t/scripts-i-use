@@ -156,4 +156,4 @@ cert-manager-controller-metrics   ClusterIP   10.104.31.88    <none>        9402
 cert-manager-webhook              ClusterIP   10.101.44.240   <none>        443/TCP    50s
 cloud_user@k8s-control:~$ exit
 logout
-Connection to 54.157.31.183 closed.
+⎈ Connection to 54.157.31.183 closed.
