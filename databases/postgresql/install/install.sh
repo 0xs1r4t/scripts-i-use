@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# docs -- https://www.postgresql.org/download/linux/<distribution>
+
 # pre-requisites
     # 1. add repository
     # 2. import gpg key

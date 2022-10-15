@@ -1,0 +1,243 @@
+scripts-i-use 18:46:39 > ssh cloud_user@54.242.100.57
+The authenticity of host '54.242.100.57 (54.242.100.57)' can't be established.
+ECDSA key fingerprint is SHA256:WhDuC5g8lXaUfCXef5ifiq4KHPleiDbQgl1J6JIIihA.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Failed to add the host to the list of known hosts (/home/idk/.ssh/known_hosts).
+Password:
+[cloud_user@postgres ~]$ clear
+[cloud_user@postgres ~]$ sudo vi /etc/yum.repos.d/CentOS-Base.repo
+[sudo] password for cloud_user:
+[cloud_user@postgres ~]$ sudo vim /etc/yum.repos.d/CentOS-Ba
+se.repo
+[cloud_user@postgres ~]$ sudo yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+Loaded plugins: fastestmirror
+pgdg-redhat-repo-latest.noarch.rpm   | 8.5 kB     00:00
+Examining /var/tmp/yum-root-lq4syH/pgdg-redhat-repo-latest.noarch.rpm: pgdg-redhat-repo-42.0-27.noarch
+Marking /var/tmp/yum-root-lq4syH/pgdg-redhat-repo-latest.noarch.rpm to be installed
+Resolving Dependencies
+--> Running transaction check
+---> Package pgdg-redhat-repo.noarch 0:42.0-27 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+============================================================
+ Package
+       Arch   Version Repository                       Size
+============================================================
+Installing:
+ pgdg-redhat-repo
+       noarch 42.0-27 /pgdg-redhat-repo-latest.noarch  12 k
+
+Transaction Summary
+============================================================
+Install  1 Package
+
+Total size: 12 k
+Installed size: 12 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : pgdg-redhat-repo-42.0-27.noarch          1/1
+  Verifying  : pgdg-redhat-repo-42.0-27.noarch          1/1
+
+Installed:
+  pgdg-redhat-repo.noarch 0:42.0-27
+
+Complete!
+[cloud_user@postgres ~]$ sudo yum install -y postgresql12-se
+rver postgresql12-contrib
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+ * base: download.cf.centos.org
+ * extras: download.cf.centos.org
+ * updates: download.cf.centos.org
+base                                 | 3.6 kB     00:00
+extras                               | 2.9 kB     00:00
+pgdg-common/7/x86_64/signature       |  198 B     00:00
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+Importing GPG key 0x442DF0F8:
+ Userid     : "PostgreSQL RPM Building Project <pgsql-pkg-yum@postgresql.org>"
+ Fingerprint: 68c9 e2b9 1a37 d136 fe74 d176 1f16 d2e1 442d f0f8
+ Package    : pgdg-redhat-repo-42.0-27.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+pgdg-common/7/x86_64/signature       | 2.9 kB     00:00 !!!
+pgdg10/7/x86_64/signature            |  198 B     00:00
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+Importing GPG key 0x442DF0F8:
+ Userid     : "PostgreSQL RPM Building Project <pgsql-pkg-yum@postgresql.org>"
+ Fingerprint: 68c9 e2b9 1a37 d136 fe74 d176 1f16 d2e1 442d f0f8
+ Package    : pgdg-redhat-repo-42.0-27.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+pgdg10/7/x86_64/signature            | 3.6 kB     00:00 !!!
+pgdg11/7/x86_64/signature            |  198 B     00:00
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+Importing GPG key 0x442DF0F8:
+ Userid     : "PostgreSQL RPM Building Project <pgsql-pkg-yum@postgresql.org>"
+ Fingerprint: 68c9 e2b9 1a37 d136 fe74 d176 1f16 d2e1 442d f0f8
+ Package    : pgdg-redhat-repo-42.0-27.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+pgdg11/7/x86_64/signature            | 3.6 kB     00:00 !!!
+pgdg12/7/x86_64/signature            |  198 B     00:00
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+Importing GPG key 0x442DF0F8:
+ Userid     : "PostgreSQL RPM Building Project <pgsql-pkg-yum@postgresql.org>"
+ Fingerprint: 68c9 e2b9 1a37 d136 fe74 d176 1f16 d2e1 442d f0f8
+ Package    : pgdg-redhat-repo-42.0-27.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+pgdg12/7/x86_64/signature            | 3.6 kB     00:00 !!!
+pgdg13/7/x86_64/signature            |  198 B     00:00
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+Importing GPG key 0x442DF0F8:
+ Userid     : "PostgreSQL RPM Building Project <pgsql-pkg-yum@postgresql.org>"
+ Fingerprint: 68c9 e2b9 1a37 d136 fe74 d176 1f16 d2e1 442d f0f8
+ Package    : pgdg-redhat-repo-42.0-27.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+pgdg13/7/x86_64/signature            | 3.6 kB     00:00 !!!
+pgdg14/7/x86_64/signature            |  198 B     00:00
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+Importing GPG key 0x442DF0F8:
+ Userid     : "PostgreSQL RPM Building Project <pgsql-pkg-yum@postgresql.org>"
+ Fingerprint: 68c9 e2b9 1a37 d136 fe74 d176 1f16 d2e1 442d f0f8
+ Package    : pgdg-redhat-repo-42.0-27.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+pgdg14/7/x86_64/signature            | 3.6 kB     00:00 !!!
+pgdg15/7/x86_64/signature            |  198 B     00:00
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+Importing GPG key 0x442DF0F8:
+ Userid     : "PostgreSQL RPM Building Project <pgsql-pkg-yum@postgresql.org>"
+ Fingerprint: 68c9 e2b9 1a37 d136 fe74 d176 1f16 d2e1 442d f0f8
+ Package    : pgdg-redhat-repo-42.0-27.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+pgdg15/7/x86_64/signature            | 3.6 kB     00:00 !!!
+updates                              | 2.9 kB     00:00
+(1/17): base/7/x86_64/group_gz         | 153 kB   00:00
+(2/17): extras/7/x86_64/primary_db     | 249 kB   00:00
+(3/17): pgdg10/7/x86_64/group_gz       |  245 B   00:00
+(4/17): pgdg11/7/x86_64/primary_db     | 438 kB   00:00
+(5/17): pgdg12/7/x86_64/group_gz       |  245 B   00:00
+(6/17): pgdg12/7/x86_64/primary_db     | 323 kB   00:00
+(7/17): pgdg13/7/x86_64/group_gz       |  246 B   00:00
+(8/17): base/7/x86_64/primary_db       | 6.1 MB   00:00
+(9/17): pgdg13/7/x86_64/primary_db     | 223 kB   00:00
+(10/17): pgdg14/7/x86_64/primary_db    | 143 kB   00:00
+(11/17): pgdg15/7/x86_64/group_gz      |  246 B   00:00
+(12/17): pgdg-common/7/x86_64/primary_ | 164 kB   00:00
+(13/17): pgdg15/7/x86_64/primary_db    |  51 kB   00:00
+(14/17): pgdg11/7/x86_64/group_gz      |  245 B   00:00
+(15/17): pgdg10/7/x86_64/primary_db    | 396 kB   00:00
+(16/17): pgdg14/7/x86_64/group_gz      |  244 B   00:00
+(17/17): updates/7/x86_64/primary_db   |  17 MB   00:00
+Resolving Dependencies
+--> Running transaction check
+---> Package postgresql12-contrib.x86_64 0:12.12-1PGDG.rhel7 will be installed
+--> Processing Dependency: postgresql12-libs(x86-64) = 12.12-1PGDG.rhel7 for package: postgresql12-contrib-12.12-1PGDG.rhel7.x86_64
+--> Processing Dependency: postgresql12(x86-64) = 12.12-1PGDG.rhel7 for package: postgresql12-contrib-12.12-1PGDG.rhel7.x86_64
+--> Processing Dependency: libxslt.so.1(LIBXML2_1.0.22)(64bit) for package: postgresql12-contrib-12.12-1PGDG.rhel7.x86_64
+--> Processing Dependency: libxslt.so.1(LIBXML2_1.0.18)(64bit) for package: postgresql12-contrib-12.12-1PGDG.rhel7.x86_64
+--> Processing Dependency: libxslt.so.1(LIBXML2_1.0.11)(64bit) for package: postgresql12-contrib-12.12-1PGDG.rhel7.x86_64
+--> Processing Dependency: libxslt.so.1()(64bit) for package: postgresql12-contrib-12.12-1PGDG.rhel7.x86_64
+--> Processing Dependency: libpq.so.5()(64bit) for package: postgresql12-contrib-12.12-1PGDG.rhel7.x86_64
+---> Package postgresql12-server.x86_64 0:12.12-1PGDG.rhel7 will be installed
+--> Processing Dependency: libicuuc.so.50()(64bit) for package: postgresql12-server-12.12-1PGDG.rhel7.x86_64
+--> Processing Dependency: libicui18n.so.50()(64bit) for package: postgresql12-server-12.12-1PGDG.rhel7.x86_64
+--> Running transaction check
+---> Package libicu.x86_64 0:50.2-4.el7_7 will be installed
+---> Package libxslt.x86_64 0:1.1.28-6.el7 will be installed
+---> Package postgresql12.x86_64 0:12.12-1PGDG.rhel7 will be installed
+---> Package postgresql12-libs.x86_64 0:12.12-1PGDG.rhel7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+============================================================
+ Package              Arch   Version           Repository
+                                                       Size
+============================================================
+Installing:
+ postgresql12-contrib x86_64 12.12-1PGDG.rhel7 pgdg12 617 k
+ postgresql12-server  x86_64 12.12-1PGDG.rhel7 pgdg12 5.1 M
+Installing for dependencies:
+ libicu               x86_64 50.2-4.el7_7      base   6.9 M
+ libxslt              x86_64 1.1.28-6.el7      base   242 k
+ postgresql12         x86_64 12.12-1PGDG.rhel7 pgdg12 1.6 M
+ postgresql12-libs    x86_64 12.12-1PGDG.rhel7 pgdg12 376 k
+
+Transaction Summary
+============================================================
+Install  2 Packages (+4 Dependent packages)
+
+Total download size: 15 M
+Installed size: 57 M
+Downloading packages:
+(1/6): libxslt-1.1.28-6.el7.x86_64.rpm | 242 kB   00:00
+warning: /var/cache/yum/x86_64/7/pgdg12/packages/postgresql12-12.12-1PGDG.rhel7.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 442df0f8: NOKEY
+Public key for postgresql12-12.12-1PGDG.rhel7.x86_64.rpm is not installed
+(2/6): postgresql12-12.12-1PGDG.rhel7. | 1.6 MB   00:00
+(3/6): postgresql12-libs-12.12-1PGDG.r | 376 kB   00:00
+(4/6): libicu-50.2-4.el7_7.x86_64.rpm  | 6.9 MB   00:00
+(5/6): postgresql12-server-12.12-1PGDG | 5.1 MB   00:00
+(6/6): postgresql12-contrib-12.12-1PGD | 617 kB   00:01
+------------------------------------------------------------
+Total                           11 MB/s |  15 MB  00:01
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+Importing GPG key 0x442DF0F8:
+ Userid     : "PostgreSQL RPM Building Project <pgsql-pkg-yum@postgresql.org>"
+ Fingerprint: 68c9 e2b9 1a37 d136 fe74 d176 1f16 d2e1 442d f0f8
+ Package    : pgdg-redhat-repo-42.0-27.noarch (@/pgdg-redhat-repo-latest.noarch)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : postgresql12-libs-12.12-1PGDG.rhel7.x8   1/6
+  Installing : libicu-50.2-4.el7_7.x86_64               2/6
+  Installing : postgresql12-12.12-1PGDG.rhel7.x86_64    3/6
+  Installing : postgresql12-server-12.12-1PGDG.rhel7.   4/6
+  Installing : libxslt-1.1.28-6.el7.x86_64              5/6
+  Installing : postgresql12-contrib-12.12-1PGDG.rhel7   6/6
+  Verifying  : postgresql12-contrib-12.12-1PGDG.rhel7   1/6
+  Verifying  : libxslt-1.1.28-6.el7.x86_64              2/6
+  Verifying  : postgresql12-libs-12.12-1PGDG.rhel7.x8   3/6
+  Verifying  : libicu-50.2-4.el7_7.x86_64               4/6
+  Verifying  : postgresql12-server-12.12-1PGDG.rhel7.   5/6
+  Verifying  : postgresql12-12.12-1PGDG.rhel7.x86_64    6/6
+
+Installed:
+  postgresql12-contrib.x86_64 0:12.12-1PGDG.rhel7
+  postgresql12-server.x86_64 0:12.12-1PGDG.rhel7
+
+Dependency Installed:
+  libicu.x86_64 0:50.2-4.el7_7
+  libxslt.x86_64 0:1.1.28-6.el7
+  postgresql12.x86_64 0:12.12-1PGDG.rhel7
+  postgresql12-libs.x86_64 0:12.12-1PGDG.rhel7
+
+Complete!
+[cloud_user@postgres ~]$ sudo su- postgres
+sudo: su-: command not found
+[cloud_user@postgres ~]$ sudo su - postgres
+-bash-4.2$ exit
+logout
+[cloud_user@postgres ~]$ sudo /usr/pgsql-12/bin/postgresql-12-setup initdb
+Initializing database ... OK
+
+[cloud_user@postgres ~]$ sudo systemctl start postgresql-12
+[cloud_user@postgres ~]$ sudo systemctl enable postgresql-12
+
+Created symlink from /etc/systemd/system/multi-user.target.wants/postgresql-12.service to /usr/lib/systemd/system/postgresql-12.service.
+[cloud_user@postgres ~]$ sudo su - postgresql
+su: user postgresql does not exist
+[cloud_user@postgres ~]$ sudo su - postgres
+Last login: Sat Oct 15 09:22:01 EDT 2022 on pts/0
+-bash-4.2$ psql
+psql (12.12)
+Type "help" for help.
+
+postgres=# \password
+Enter new password for user "postgres":
+Enter it again:
+postgres=# \q
+-bash-4.2$

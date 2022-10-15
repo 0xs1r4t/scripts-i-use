@@ -50,7 +50,12 @@
 │           └── web-frontend.yml
 ├── databases
 │   └── postgresql
-│       └── install.sh
+│       ├── config
+│       │   ├── server-db-config.sh
+│       │   └── timezone.log
+│       └── install
+│           ├── centos-install.log
+│           └── install.sh
 ├── do-not-commit
 │   ├── mongodb-intro.sh
 │   ├── mousemove.ps1
@@ -65,5 +70,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-21 directories, 43 files
+23 directories, 46 files
 ```

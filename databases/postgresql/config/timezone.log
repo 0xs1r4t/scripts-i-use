@@ -1,0 +1,24 @@
+# temporarily change the timezone
+
+91852 19:22:59 > sudo su - postgres
+postgres@izuku:~$ psql
+psql (15.0 (Debian 15.0-1.pgdg110+1))
+Type "help" for help.
+
+postgres=# SHOW timezone;
+   TimeZone
+---------------
+ Asia/Calcutta
+(1 row)
+
+postgres=# SET timezone='Europe/Rome';
+SET
+postgres=# SHOW timezone;
+  TimeZone
+-------------
+ Europe/Rome
+(1 row)
+
+postgres=# \q
+postgres@izuku:~$ exit
+logout
