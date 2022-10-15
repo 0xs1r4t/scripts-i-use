@@ -48,6 +48,9 @@
 │           ├── pods-create-logs.log
 │           ├── status-create-delete-pod.log
 │           └── web-frontend.yml
+├── databases
+│   └── postgresql
+│       └── install.sh
 ├── do-not-commit
 │   ├── mongodb-intro.sh
 │   ├── mousemove.ps1
@@ -62,5 +65,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-19 directories, 42 files
+21 directories, 43 files
 ```
