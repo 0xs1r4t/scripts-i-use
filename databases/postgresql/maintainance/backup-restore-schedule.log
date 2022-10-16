@@ -1,0 +1,702 @@
+ssh cloud_user@107.23.210.186
+The authenticity of host '107.23.210.186 (107.23.210.186)' can't be established.
+ECDSA key fingerprint is SHA256:S97oBDwRtGowKUDVW7oOxJdNYLJxHPoh3vNJCN1ttUY.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '107.23.210.186' (ECDSA) to the list of known hosts.
+Password:
+[cloud_user@postgres ~]$ sudo su - postgres
+[sudo] password for cloud_user:
+
+-bash-4.2$ # RESTORE A BACKUP
+-bash-4.2$ #
+-bash-4.2$ #
+-bash-4.2$ createdb acweb
+-bash-4.2$ wget https://github.com/linuxacademy/content-postgresql-deepdive/raw/master/acweb/acweb.tar
+--2022-10-16 14:05:02--  https://github.com/linuxacademy/content-postgresql-deepdive/raw/master/acweb/acweb.tar
+Resolving github.com (github.com)... 140.82.112.4
+Connecting to github.com (github.com)|140.82.112.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/linuxacademy/content-postgresql-deepdive/master/acweb/acweb.tar [following]
+--2022-10-16 14:05:02--  https://raw.githubusercontent.com/linuxacademy/content-postgresql-deepdive/master/acweb/acweb.tar
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 210432 (206K) [application/octet-stream]
+Saving to: ‘acweb.tar’
+
+100%[==================>] 210,432     --.-K/s   in 0.004s
+
+2022-10-16 14:05:02 (49.8 MB/s) - ‘acweb.tar’ saved [210432/210432]
+
+-bash-4.2$ pg_restore --dbname=acweb --verbose /var/lib/pgsql/acweb.tar
+pg_restore: connecting to database for restore
+pg_restore: creating SCHEMA "hr"
+pg_restore: creating SCHEMA "sales"
+pg_restore: creating TABLE "hr.staff"
+pg_restore: creating SEQUENCE "hr.staff_staff_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "hr.staff_staff_id_seq"
+pg_restore: creating TABLE "sales.address"
+pg_restore: creating SEQUENCE "sales.address_addr_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.address_addr_id_seq"
+pg_restore: creating TABLE "sales.category"
+pg_restore: creating SEQUENCE "sales.category_cat_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.category_cat_id_seq"
+pg_restore: creating TABLE "sales.city"
+pg_restore: creating SEQUENCE "sales.city_city_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.city_city_id_seq"
+pg_restore: creating TABLE "sales.customer"
+pg_restore: creating SEQUENCE "sales.customer_customer_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.customer_customer_id_seq"
+pg_restore: creating TABLE "sales.payment"
+pg_restore: creating SEQUENCE "sales.payment_payment_id_seq"pg_restore: creating SEQUENCE OWNED BY "sales.payment_payment_id_seq"
+pg_restore: creating TABLE "sales.products"
+pg_restore: creating SEQUENCE "sales.products_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.products_id_seq"
+pg_restore: creating TABLE "sales.state"
+pg_restore: creating SEQUENCE "sales.state_state_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.state_state_id_seq"
+pg_restore: creating DEFAULT "hr.staff staff_id"
+pg_restore: creating DEFAULT "sales.address addr_id"
+pg_restore: creating DEFAULT "sales.category cat_id"
+pg_restore: creating DEFAULT "sales.city city_id"
+pg_restore: creating DEFAULT "sales.customer customer_id"
+pg_restore: creating DEFAULT "sales.payment payment_id"
+pg_restore: creating DEFAULT "sales.products id"
+pg_restore: creating DEFAULT "sales.state state_id"
+pg_restore: processing data for table "hr.staff"
+pg_restore: processing data for table "sales.address"
+pg_restore: processing data for table "sales.category"
+pg_restore: processing data for table "sales.city"
+pg_restore: processing data for table "sales.customer"
+pg_restore: processing data for table "sales.payment"
+pg_restore: processing data for table "sales.products"
+pg_restore: processing data for table "sales.state"
+pg_restore: executing SEQUENCE SET staff_staff_id_seq
+pg_restore: executing SEQUENCE SET address_addr_id_seq
+pg_restore: executing SEQUENCE SET category_cat_id_seq
+pg_restore: executing SEQUENCE SET city_city_id_seq
+pg_restore: executing SEQUENCE SET customer_customer_id_seq
+pg_restore: executing SEQUENCE SET payment_payment_id_seq
+pg_restore: executing SEQUENCE SET products_id_seq
+pg_restore: executing SEQUENCE SET state_state_id_seq
+pg_restore: creating CONSTRAINT "hr.staff staff_email_key"
+pg_restore: creating CONSTRAINT "hr.staff staff_pkey"
+pg_restore: creating CONSTRAINT "sales.address address_pkey"pg_restore: creating CONSTRAINT "sales.category category_name_key"
+pg_restore: creating CONSTRAINT "sales.category category_pkey"
+pg_restore: creating CONSTRAINT "sales.city city_pkey"
+pg_restore: creating CONSTRAINT "sales.customer customer_email_key"
+pg_restore: creating CONSTRAINT "sales.customer customer_pkey"
+pg_restore: creating CONSTRAINT "sales.payment payment_pkey"pg_restore: creating CONSTRAINT "sales.products products_pkey"
+pg_restore: creating CONSTRAINT "sales.state state_pkey"
+pg_restore: creating FK CONSTRAINT "hr.staff addrfk"
+pg_restore: creating FK CONSTRAINT "sales.customer addrfk"
+pg_restore: creating FK CONSTRAINT "sales.products catfk"
+pg_restore: creating FK CONSTRAINT "sales.payment custfk"
+pg_restore: creating FK CONSTRAINT "sales.city stfk"
+-bash-4.2$ psql
+psql (12.12)
+Type "help" for help.
+
+postgres=# \l
+                                  List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype
+ |   Access privileges
+-----------+----------+----------+-------------+-------------+-----------------------
+ acweb     | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |
+ | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |
+ | postgres=CTc/postgres
+(4 rows)
+
+postgres=# \c acweb
+You are now connected to database "acweb" as user "postgres".
+acweb=# SELECT COUNT(*) FROM sales.payment;
+ count
+-------
+  1000
+(1 row)
+
+acweb=# \q
+
+-bash-4.2$ # CREATE A BACKUP
+-bash-4.2$ #
+-bash-4.2$ #
+-bash-4.2$ wget  https://raw.githubusercontent.com/linuxacademy/content-postgresql-deepdive/master/acweb/accessLog.sql
+--2022-10-16 14:06:00--  https://raw.githubusercontent.com/linuxacademy/content-postgresql-deepdive/master/acweb/accessLog.sql
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.110.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 112690 (110K) [text/plain]
+Saving to: ‘accessLog.sql’
+
+100%[==================>] 112,690     --.-K/s   in 0.002s
+
+2022-10-16 14:06:00 (49.9 MB/s) - ‘accessLog.sql’ saved [112690/112690]
+
+-bash-4.2$ psql -f accessLog.sql acweb
+SET
+SET
+SET
+SET
+SET
+SET
+SET
+SET
+SET
+You are now connected to database "acweb" as user "postgres".
+CREATE TABLE
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+-bash-4.2$ mkdir backups
+-bash-4.2$ ls
+12  accessLog.sql  acweb.tar  backups
+-bash-4.2$ pg_dump -F t acweb > backups/acwebdev.tar
+-bash-4.2$ wget https://raw.githubusercontent.com/linuxacademy/content-postgresql-deepdive/master/acweb/pg_backup.sh
+--2022-10-16 14:06:44--  https://raw.githubusercontent.com/linuxacademy/content-postgresql-deepdive/master/acweb/pg_backup.sh
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 652 [text/plain]
+Saving to: ‘pg_backup.sh’
+
+100%[==================>] 652         --.-K/s   in 0s
+
+2022-10-16 14:06:44 (37.5 MB/s) - ‘pg_backup.sh’ saved [652/652]
+
+-bash-4.2$ chmod +x pg_backup.sh
+-bash-4.2$ ./pg_backup.sh
+-bash-4.2$ cat pg_backup.sh
+#!/bin/bash
+
+###################################################################
+# Source: Linux Acadamey PostgreSQL Administration Deep Dive Course
+# Author: Landon Fowler
+# Purpose: Script for backing up the acweb database
+# Date Updated: 03/05/2020
+###################################################################
+
+# Backup directory and name suffix
+BACKUP_DIR=/var/lib/pgsql/backups
+FILE_SUFFIX=_pg_backupl.tar
+
+# Name file using the date and supplied suffix
+FILE=`date +"%Y%m%d%H%M"`${FILE_SUFFIX}
+
+# Combine the backup directory and file name
+OUTPUT_FILE=${BACKUP_DIR}/${FILE}
+
+# Execute the backup as a tar
+pg_dump -F t acweb > ${OUTPUT_FILE}-bash-4.2$ ls backups
+202210161406_pg_backupl.tar  acwebdev.tar
+
+-bash-4.2$ # SCHEDULE A BACKUP
+-bash-4.2$ #
+-bash-4.2$ #
+-bash-4.2$ crontab -e
+no crontab for postgres - using an empty one
+crontab: installing new crontab
+-bash-4.2$ crontab -l
+0 1 * * * /var/lib/pgsql/pg_backup.sh
+-bash-4.2$
