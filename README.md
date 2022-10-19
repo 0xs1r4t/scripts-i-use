@@ -50,6 +50,15 @@
 │           └── web-frontend.yml
 ├── databases
 │   └── postgresql
+│       ├── commands
+│       │   ├── all-commands.log
+│       │   ├── create_payment_audit.sql
+│       │   ├── delete_payments.sql
+│       │   ├── delete_trigger_payment_audit.sql
+│       │   ├── insert_values.sql
+│       │   ├── select_mick.sql
+│       │   ├── update_payment.sql
+│       │   └── view_customer_addrs.sql
 │       ├── configuration
 │       │   ├── server-db-config.sh
 │       │   └── timezone.log
@@ -72,5 +81,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-24 directories, 47 files
+25 directories, 55 files
 ```

@@ -1,0 +1,242 @@
+$ ssh cloud_user@34.224.98.188
+The authenticity of host '34.224.98.188 (34.224.98.188)' can't be established.
+ECDSA key fingerprint is SHA256:VdwQNjrub4httQtZdLdbu6N4rAP4abxS4pedmUnttgE.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '34.224.98.188' (ECDSA) to the list of known hosts.
+Password:
+[cloud_user@postgres ~]$ sudo su - postgres
+[sudo] password for cloud_user:
+-bash-4.2$ createdb acweb
+-bash-4.2$ wget https://github.com/linuxacademy/content-postgresql-deepdive/raw/master/acweb/acweb.tar
+--2022-10-19 03:39:59--  https://github.com/linuxacademy/content-postgresql-deepdive/raw/master/acweb/acweb.tar
+Resolving github.com (github.com)... 140.82.112.4
+Connecting to github.com (github.com)|140.82.112.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/linuxacademy/content-postgresql-deepdive/master/acweb/acweb.tar [following]
+--2022-10-19 03:39:59--  https://raw.githubusercontent.com/linuxacademy/content-postgresql-deepdive/master/acweb/acweb.tar
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.110.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 210432 (206K) [application/octet-stream]
+Saving to: ‘acweb.tar’
+
+100%[==================>] 210,432     --.-K/s   in 0.003s
+
+2022-10-19 03:39:59 (75.6 MB/s) - ‘acweb.tar’ saved [210432/210432]
+
+-bash-4.2$ pg_restore --dbname=acweb --verbose /var/lib/pgsql/acweb.tar
+pg_restore: connecting to database for restore
+pg_restore: creating SCHEMA "hr"
+pg_restore: creating SCHEMA "sales"
+pg_restore: creating TABLE "hr.staff"
+pg_restore: creating SEQUENCE "hr.staff_staff_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "hr.staff_staff_id_seq"
+pg_restore: creating TABLE "sales.address"
+pg_restore: creating SEQUENCE "sales.address_addr_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.address_addr_id_seq"
+pg_restore: creating TABLE "sales.category"
+pg_restore: creating SEQUENCE "sales.category_cat_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.category_cat_id_seq"
+pg_restore: creating TABLE "sales.city"
+pg_restore: creating SEQUENCE "sales.city_city_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.city_city_id_seq"
+pg_restore: creating TABLE "sales.customer"
+pg_restore: creating SEQUENCE "sales.customer_customer_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.customer_customer_id_seq"
+pg_restore: creating TABLE "sales.payment"
+pg_restore: creating SEQUENCE "sales.payment_payment_id_seq"pg_restore: creating SEQUENCE OWNED BY "sales.payment_payment_id_seq"
+pg_restore: creating TABLE "sales.products"
+pg_restore: creating SEQUENCE "sales.products_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.products_id_seq"
+pg_restore: creating TABLE "sales.state"
+pg_restore: creating SEQUENCE "sales.state_state_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "sales.state_state_id_seq"
+pg_restore: creating DEFAULT "hr.staff staff_id"
+pg_restore: creating DEFAULT "sales.address addr_id"
+pg_restore: creating DEFAULT "sales.category cat_id"
+pg_restore: creating DEFAULT "sales.city city_id"
+pg_restore: creating DEFAULT "sales.customer customer_id"
+pg_restore: creating DEFAULT "sales.payment payment_id"
+pg_restore: creating DEFAULT "sales.products id"
+pg_restore: creating DEFAULT "sales.state state_id"
+pg_restore: processing data for table "hr.staff"
+pg_restore: processing data for table "sales.address"
+pg_restore: processing data for table "sales.category"
+pg_restore: processing data for table "sales.city"
+pg_restore: processing data for table "sales.customer"
+pg_restore: processing data for table "sales.payment"
+pg_restore: processing data for table "sales.products"
+pg_restore: processing data for table "sales.state"
+pg_restore: executing SEQUENCE SET staff_staff_id_seq
+pg_restore: executing SEQUENCE SET address_addr_id_seq
+pg_restore: executing SEQUENCE SET category_cat_id_seq
+pg_restore: executing SEQUENCE SET city_city_id_seq
+pg_restore: executing SEQUENCE SET customer_customer_id_seq
+pg_restore: executing SEQUENCE SET payment_payment_id_seq
+pg_restore: executing SEQUENCE SET products_id_seq
+pg_restore: executing SEQUENCE SET state_state_id_seq
+pg_restore: creating CONSTRAINT "hr.staff staff_email_key"
+pg_restore: creating CONSTRAINT "hr.staff staff_pkey"
+pg_restore: creating CONSTRAINT "sales.address address_pkey"pg_restore: creating CONSTRAINT "sales.category category_name_key"
+pg_restore: creating CONSTRAINT "sales.category category_pkey"
+pg_restore: creating CONSTRAINT "sales.city city_pkey"
+pg_restore: creating CONSTRAINT "sales.customer customer_email_key"
+pg_restore: creating CONSTRAINT "sales.customer customer_pkey"
+pg_restore: creating CONSTRAINT "sales.payment payment_pkey"pg_restore: creating CONSTRAINT "sales.products products_pkey"
+pg_restore: creating CONSTRAINT "sales.state state_pkey"
+pg_restore: creating FK CONSTRAINT "hr.staff addrfk"
+pg_restore: creating FK CONSTRAINT "sales.customer addrfk"
+pg_restore: creating FK CONSTRAINT "sales.products catfk"
+pg_restore: creating FK CONSTRAINT "sales.payment custfk"
+pg_restore: creating FK CONSTRAINT "sales.city stfk"
+-bash-4.2$ psql
+psql (12.12)
+Type "help" for help.
+
+postgres=# \l
+                                  List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype
+ |   Access privileges
+-----------+----------+----------+-------------+-------------+-----------------------
+ acweb     | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |
+ | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |
+ | postgres=CTc/postgres
+(4 rows)
+
+postgres=# \c acweb
+You are now connected to database "acweb" as user "postgres".
+acweb=# SELECT COUNT(*) FROM sales.payment;
+ count
+-------
+  1000
+(1 row)
+
+acweb=# vim create_payment_audit.sql
+acweb-# ls
+acweb-# \q
+-bash-4.2$  vim create_payment_audit.sql
+-bash-4.2$ psql
+psql (12.12)
+Type "help" for help.
+
+postgres=# \c acweb
+You are now connected to database "acweb" as user "postgres".
+acweb=# \i ./create_payment_audit.sql
+CREATE TABLE
+acweb=# \dt
+             List of relations
+ Schema |     Name      | Type  |  Owner
+--------+---------------+-------+----------
+ public | payment_audit | table | postgres
+(1 row)
+
+acweb=# \q
+-bash-4.2$  vim delete_trigger_payment_audit.sql
+-bash-4.2$ psql
+psql (12.12)
+Type "help" for help.
+
+postgres=# \c acweb
+You are now connected to database "acweb" as user "postgres".
+acweb=# \i delete_trigger_payment_audit.sql
+CREATE FUNCTION
+CREATE TRIGGER
+acweb=# \q
+-bash-4.2$ vim view_customer_addrs.sql
+-bash-4.2$ psql
+psql (12.12)
+Type "help" for help.
+
+postgres=# \c acweb
+You are now connected to database "acweb" as user "postgres".
+acweb=# \i view_customer_addrs.sql
+CREATE VIEW
+acweb=# \q
+-bash-4.2$ vim select_mick.sql
+-bash-4.2$ vim insert_values.sql
+-bash-4.2$ vim update_payment.sql
+-bash-4.2$ vim delete_payments.sql
+-bash-4.2$ psql
+psql (12.12)
+Type "help" for help.
+
+postgres=# \c acweb
+You are now connected to database "acweb" as user "postgres".
+acweb=# \i select_mick.sql
+ customer_id | first_name | last_name | addr_id |         email         |    phone
+-------------+------------+-----------+---------+-----------------------+--------------
+         303 | Mick       | Fowler    |     340 | mfowler8e@answers.com | 893-316-1861
+(1 row)
+
+acweb=# \x
+Expanded display is on.
+acweb=# \i insert_values.sql
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+acweb=# \i update_payment.sql
+UPDATE 1
+acweb=# \i delete_payments.sql
+DELETE 2
+acweb=# SELECT * FROM sales.customer_addresses;
+-[ RECORD 1 ]---------------------------------
+first_name  | Wernher
+last_name   | Daniely
+address     | 4 Morrow Hill
+city        | Zaokskiy
+state       | Minnesota
+postal_code |
+-[ RECORD 2 ]---------------------------------
+first_name  |
+last_name   | Robertshaw
+address     | 6 Eggendart Parkway
+city        | Krajan Satu
+state       | Texas
+postal_code | 64-115
+-[ RECORD 3 ]---------------------------------
+first_name  | Bernie
+last_name   | McMurty
+address     | 476 Lawn Junction
+city        | Hamburg Harvestehude
+state       | Missouri
+postal_code | 90160
+-[ RECORD 4 ]---------------------------------
+first_name  |
+last_name   | Crut
+address     | 9 5th Park
+city        | Bethlehem
+state       | Alabama
+acweb=# SELECT * FROM payment_audit;
+-[ RECORD 1 ]+---------------------------
+payment_id   | 1004
+customer_id  | 303
+amount       | 40.00
+payment_date | 2022-10-19 04:01:15.551075
+username     | postgres
+delete_date  | 2022-10-19 04:01:30.897124
+-[ RECORD 2 ]+---------------------------
+payment_id   | 1005
+customer_id  | 303
+amount       | 50.00
+payment_date | 2022-10-19 04:01:15.552039
+username     | postgres
+delete_date  | 2022-10-19 04:01:30.897124
+
+acweb=# \q
+-bash-4.2$ ls
+12                                insert_values.sql
+acweb.tar                         select_mick.sql
+create_payment_audit.sql          update_payment.sql
+delete_payments.sql               view_customer_addrs.sql
+delete_trigger_payment_audit.sql
+-bash-4.2$ exit
+logout
+[cloud_user@postgres ~]$ logout
+Connection to 34.224.98.188 closed.
