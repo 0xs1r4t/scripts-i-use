@@ -1,0 +1,3 @@
+add after
+users  		ALL=(ALL)	NOPASSWD: ALL
+ansible           ALL=(ALL)       NOPASSWD: ALL

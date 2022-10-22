@@ -1,0 +1,56 @@
+[user@control]
+sudo yum install epel-release ansible -y
+
+sudo useradd ansible
+ssh workstation
+
+[user@workstation]
+sudo useradd ansible
+sudo passwd ansible
+logout
+
+[user@control]
+sudo su - ansible
+
+[ansible@control]
+ssh-keygen
+ssh-copy-id workstation
+ssh workstation # no passwd required
+
+[ansible@workstation]
+logout
+
+[ansible@control]
+ssh user@workstation
+
+[user@workstation]
+sudo visudo # see visudo.example
+
+logout
+
+[ansible@control]
+pwd
+(/home/ansible)
+
+vim inventory
+vim git-setup.yml
+
+ansible-playbook -i inventory git-setup.yml
+
+PLAY [workstation] *************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [workstation]
+
+TASK [install git] *************************************************************
+changed: [workstation]
+
+PLAY RECAP *********************************************************************
+workstation                : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+
+ssh workstation
+
+[ansible@workstation]
+which git
+(/usr/bin/git)
