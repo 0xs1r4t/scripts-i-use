@@ -1,0 +1,266 @@
+[cloud_user@control1 ~]$ sudo yum install ansible -y
+Failed to set locale, defaulting to C
+Loaded plugins: amazon-id, search-disabled-repos
+epel/x86_64/metalink                 |  23 kB     00:00
+rhel-7-server-rhui-rh-common-rpms    | 3.8 kB     00:00
+rhel-7-server-rhui-rpms              | 3.5 kB     00:00
+rhui-client-config-server-7          | 2.0 kB     00:00
+epel/x86_64/group_gz           FAILED
+
+http://mirror.es.its.nyu.edu/epel/7/x86_64/repodata/dab4efb89e04560cfbe53711f412c32247da39a0d721d9ec2c9f1e88aed424d1-comps-Everything.x86_64.xml.gz: [Errno 12] Timeout on http://mirror.es.its.nyu.edu/epel/7/x86_64/repodata/dab4efb89e04560cfbe53711f412c32247da39a0d721d9ec2c9f1e88aed424d1-comps-Everything.x86_64.xml.gz: (28, 'Connection timed out after 30001 milliseconds')
+Trying other mirror.
+(1/11): epel/x86_64/primary_db         | 7.0 MB   00:00
+(2/11): rhel-7-server-rhui-rh-common-r |  124 B   00:00
+(3/11): rhel-7-server-rhui-rh-common-r |  34 kB   00:00
+(4/11): rhel-7-server-rhui-rh-common-r | 119 kB   00:00
+(5/11): rhel-7-server-rhui-rpms/7Serve | 4.2 MB   00:00
+(6/11): rhel-7-server-rhui-rpms/7Serve | 631 kB   00:00
+(7/11): epel/x86_64/group_gz           |  97 kB   00:00
+(8/11): rhui-client-config-server-7/x8 | 1.6 kB   00:00
+(9/11): rhui-client-config-server-7/x8 |   71 B   00:00
+(10/11): rhel-7-server-rhui-rpms/7Serv |  90 MB   00:00
+epel/x86_64/updateinfo         FAILED
+
+http://mirror.es.its.nyu.edu/epel/7/x86_64/repodata/c56f538d6c401067baef087a4e60271ad4aafbf2b5db16e6b9e3087d04b075c1-updateinfo.xml.bz2: [Errno 12] Timeout on http://mirror.es.its.nyu.edu/epel/7/x86_64/repodata/c56f538d6c401067baef087a4e60271ad4aafbf2b5db16e6b9e3087d04b075c1-updateinfo.xml.bz2: (28, 'Connection timed out after 30001 milliseconds')
+Trying other mirror.
+(11/11): epel/x86_64/updateinfo        | 1.1 MB   00:00
+rhui-client-config-server-7                             5/5
+Resolving Dependencies
+--> Running transaction check
+---> Package ansible.noarch 0:2.9.27-1.el7 will be installed
+--> Processing Dependency: python-httplib2 for package: ansible-2.9.27-1.el7.noarch
+--> Processing Dependency: python-paramiko for package: ansible-2.9.27-1.el7.noarch
+--> Processing Dependency: python2-cryptography for package: ansible-2.9.27-1.el7.noarch
+--> Processing Dependency: python2-jmespath for package: ansible-2.9.27-1.el7.noarch
+--> Processing Dependency: sshpass for package: ansible-2.9.27-1.el7.noarch
+--> Running transaction check
+---> Package python-paramiko.noarch 0:2.1.1-9.el7 will be installed
+--> Processing Dependency: python2-pyasn1 for package: python-paramiko-2.1.1-9.el7.noarch
+---> Package python2-cryptography.x86_64 0:1.7.2-2.el7 will be installed
+--> Processing Dependency: python-cffi >= 1.4.1 for package: python2-cryptography-1.7.2-2.el7.x86_64
+--> Processing Dependency: python-idna >= 2.0 for package: python2-cryptography-1.7.2-2.el7.x86_64
+--> Processing Dependency: python-enum34 for package: python2-cryptography-1.7.2-2.el7.x86_64
+---> Package python2-httplib2.noarch 0:0.18.1-3.el7 will be installed
+---> Package python2-jmespath.noarch 0:0.9.4-2.el7 will be installed
+---> Package sshpass.x86_64 0:1.06-1.el7 will be installed
+--> Running transaction check
+---> Package python-cffi.x86_64 0:1.6.0-5.el7 will be installed
+--> Processing Dependency: python-pycparser for package: python-cffi-1.6.0-5.el7.x86_64
+---> Package python-enum34.noarch 0:1.0.4-1.el7 will be installed
+---> Package python-idna.noarch 0:2.4-1.el7 will be installed
+---> Package python2-pyasn1.noarch 0:0.1.9-7.el7 will be installed
+--> Running transaction check
+---> Package python-pycparser.noarch 0:2.14-1.el7 will be installed
+--> Processing Dependency: python-ply for package: python-pycparser-2.14-1.el7.noarch
+--> Running transaction check
+---> Package python-ply.noarch 0:3.4-11.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+============================================================
+ Package              Arch   Version      Repository   Size
+============================================================
+Installing:
+ ansible              noarch 2.9.27-1.el7 epel         17 M
+Installing for dependencies:
+ python-cffi          x86_64 1.6.0-5.el7  rhel-7-server-rhui-rpms
+                                                      218 k
+ python-enum34        noarch 1.0.4-1.el7  rhel-7-server-rhui-rpms
+                                                       52 k
+ python-idna          noarch 2.4-1.el7    rhel-7-server-rhui-rpms
+                                                       94 k
+ python-paramiko      noarch 2.1.1-9.el7  rhel-7-server-rhui-rpms
+                                                      269 k
+ python-ply           noarch 3.4-11.el7   rhel-7-server-rhui-rpms
+                                                      123 k
+ python-pycparser     noarch 2.14-1.el7   rhel-7-server-rhui-rpms
+                                                      105 k
+ python2-cryptography x86_64 1.7.2-2.el7  rhel-7-server-rhui-rpms
+                                                      503 k
+ python2-httplib2     noarch 0.18.1-3.el7 epel        125 k
+ python2-jmespath     noarch 0.9.4-2.el7  epel         41 k
+ python2-pyasn1       noarch 0.1.9-7.el7  rhel-7-server-rhui-rpms
+                                                      100 k
+ sshpass              x86_64 1.06-1.el7   epel         21 k
+
+Transaction Summary
+============================================================
+Install  1 Package (+11 Dependent packages)
+
+Total download size: 19 M
+Installed size: 111 M
+Downloading packages:
+(1/12): python-cffi-1.6.0-5.el7.x86_64 | 218 kB   00:00
+(2/12): python-idna-2.4-1.el7.noarch.r |  94 kB   00:00
+warning: /var/cache/yum/x86_64/7Server/epel/packages/ansible-2.9.27-1.el7.noarch.rpm: Header V4 RSA/SHA256 Signature, key ID 352c64e5: NOKEY
+Public key for ansible-2.9.27-1.el7.noarch.rpm is not installed
+(3/12): ansible-2.9.27-1.el7.noarch.rp |  17 MB   00:00
+(4/12): python-enum34-1.0.4-1.el7.noar |  52 kB   00:00
+(5/12): python-paramiko-2.1.1-9.el7.no | 269 kB   00:00
+(6/12): python-ply-3.4-11.el7.noarch.r | 123 kB   00:00
+(7/12): python2-httplib2-0.18.1-3.el7. | 125 kB   00:00
+(8/12): python2-jmespath-0.9.4-2.el7.n |  41 kB   00:00
+(9/12): python2-cryptography-1.7.2-2.e | 503 kB   00:00
+(10/12): sshpass-1.06-1.el7.x86_64.rpm |  21 kB   00:00
+(11/12): python2-pyasn1-0.1.9-7.el7.no | 100 kB   00:00
+(12/12): python-pycparser-2.14-1.el7.n | 105 kB   00:00
+------------------------------------------------------------
+Total                           27 MB/s |  19 MB  00:00
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+Importing GPG key 0x352C64E5:
+ Userid     : "Fedora EPEL (7) <epel@fedoraproject.org>"
+ Fingerprint: 91e9 7d7c 4a5e 96f1 7f3e 888f 6a2f aea2 352c 64e5
+ Package    : epel-release-7-14.noarch (@/epel-release-latest-7.noarch)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : python2-pyasn1-0.1.9-7.el7.noarch       1/12
+  Installing : python-enum34-1.0.4-1.el7.noarch        2/12
+  Installing : python2-httplib2-0.18.1-3.el7.noarch    3/12
+  Installing : sshpass-1.06-1.el7.x86_64               4/12
+  Installing : python2-jmespath-0.9.4-2.el7.noarch     5/12
+  Installing : python-ply-3.4-11.el7.noarch            6/12
+  Installing : python-pycparser-2.14-1.el7.noarch      7/12
+  Installing : python-cffi-1.6.0-5.el7.x86_64          8/12
+  Installing : python-idna-2.4-1.el7.noarch            9/12
+  Installing : python2-cryptography-1.7.2-2.el7.x86   10/12
+  Installing : python-paramiko-2.1.1-9.el7.noarch     11/12
+  Installing : ansible-2.9.27-1.el7.noarch            12/12
+  Verifying  : python-idna-2.4-1.el7.noarch            1/12
+  Verifying  : python-pycparser-2.14-1.el7.noarch      2/12
+  Verifying  : python-ply-3.4-11.el7.noarch            3/12
+  Verifying  : ansible-2.9.27-1.el7.noarch             4/12
+  Verifying  : python-paramiko-2.1.1-9.el7.noarch      5/12
+  Verifying  : python2-jmespath-0.9.4-2.el7.noarch     6/12
+  Verifying  : sshpass-1.06-1.el7.x86_64               7/12
+  Verifying  : python2-httplib2-0.18.1-3.el7.noarch    8/12
+  Verifying  : python-cffi-1.6.0-5.el7.x86_64          9/12
+  Verifying  : python-enum34-1.0.4-1.el7.noarch       10/12
+  Verifying  : python2-pyasn1-0.1.9-7.el7.noarch      11/12
+  Verifying  : python2-cryptography-1.7.2-2.el7.x86   12/12
+
+Installed:
+  ansible.noarch 0:2.9.27-1.el7
+
+Dependency Installed:
+  python-cffi.x86_64 0:1.6.0-5.el7
+  python-enum34.noarch 0:1.0.4-1.el7
+  python-idna.noarch 0:2.4-1.el7
+  python-paramiko.noarch 0:2.1.1-9.el7
+  python-ply.noarch 0:3.4-11.el7
+  python-pycparser.noarch 0:2.14-1.el7
+  python2-cryptography.x86_64 0:1.7.2-2.el7
+  python2-httplib2.noarch 0:0.18.1-3.el7
+  python2-jmespath.noarch 0:0.9.4-2.el7
+  python2-pyasn1.noarch 0:0.1.9-7.el7
+  sshpass.x86_64 0:1.06-1.el7
+
+Complete!
+[cloud_user@control1 ~]$ sudo su - ansible
+[sudo] password for cloud_user:
+[ansible@control1 ~]$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/ansible/.ssh/id_rsa):
+Created directory '/home/ansible/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/ansible/.ssh/id_rsa.
+Your public key has been saved in /home/ansible/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:lKYFa6L7d5RgDQpP1R4OwqlfUjYoNFPHgAP+eMIJqFs ansible@control1
+The key's randomart image is:
++---[RSA 2048]----+
+|.o++o*+.         |
+|o =o*.Boo.       |
+|o. B.=oB=.       |
+|+ =.+o+=+        |
+|.=E+ +..S.       |
+| oo..   o        |
+|. .    .         |
+|   .  . .        |
+|    .. .         |
++----[SHA256]-----+
+[ansible@control1 ~]$ ssh-copy-id node1
+/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ansible/.ssh/id_rsa.pub"
+The authenticity of host 'node1 (10.0.1.164)' can't be established.
+ECDSA key fingerprint is SHA256:1Lu89WvBVY9MorjMF7QSBdhJEiStBs1jXdD3/AA1YnA.
+ECDSA key fingerprint is MD5:2b:83:3c:12:83:23:85:11:80:e6:b1:9c:5f:2e:5e:25.
+Are you sure you want to continue connecting (yes/no)? yes
+/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'node1'"
+and check to make sure that only the key(s) you wanted were added.
+
+[ansible@control1 ~]$ ssh-copy-id node2
+/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/ansible/.ssh/id_rsa.pub"
+The authenticity of host 'node2 (10.0.1.18)' can't be established.
+ECDSA key fingerprint is SHA256:qoCw2TWcIJb2wJspVL6X4KfZetpAvX4+L/J8QWWOymc.
+ECDSA key fingerprint is MD5:5d:b1:33:79:80:16:f0:65:ba:95:98:c2:7f:89:ff:cb.
+Are you sure you want to continue connecting (yes/no)? yes
+/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+Password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'node2'"
+and check to make sure that only the key(s) you wanted were added.
+
+[ansible@control1 ~]$ pwd
+/home/ansible
+[ansible@control1 ~]$ vim inventory
+[ansible@control1 ~]$ ls
+inventory
+[ansible@control1 ~]$ cat inventory
+node1
+node2
+[ansible@control1 ~]$ ssh cloud_user@node1
+Password:
+[cloud_user@node1 ~]$ sudo visudo
+[sudo] password for cloud_user:
+[cloud_user@node1 ~]$ logout
+Connection to node1 closed.
+[ansible@control1 ~]$ ssh cloud_user@node2
+Password:
+[cloud_user@node2 ~]$ sudo visudo
+[sudo] password for cloud_user:
+[cloud_user@node2 ~]$ logout
+Connection to node2 closed.
+[ansible@control1 ~]$ ansible -i inventory node1 -m ping
+node1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+[ansible@control1 ~]$ ansible -i inventory node2 -m ping
+node2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+[ansible@control1 ~]$ ansible -i inventory node2 -m ping > /
+home/ansible/output
+[ansible@control1 ~]$ ls
+inventory  output
+[ansible@control1 ~]$ cat output
+node2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+[ansible@control1 ~]$ Connection to 18.214.99.181 closed by remote host.
+Connection to 18.214.99.181 closed.
+scripts-i-use 18:34:11 🌼
