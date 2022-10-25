@@ -1,0 +1,531 @@
+~ 20:06:34 🌼 my-scripts
+scripts-i-use 20:06:42 🌼 ssh ansible@44.203.46.172
+The authenticity of host '44.203.46.172 (44.203.46.172)' can't be established.
+ECDSA key fingerprint is SHA256:iHd1ImQRJrzO6t707CZJw0mZ91nunlvxUpJsVR8zxFA.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '44.203.46.172' (ECDSA) to the list of known hosts.
+Password:
+[ansible@control1 ~]$
+[ansible@control1 ~]$ cat userlist.txt
+# Please create the the below users on all hosts in dbsystems
+# You will find a pregenerated key pair and an authorized key file for each user in /home/ansible/keys
+
+# User accounts to create:
+consultant
+supervisor
+[ansible@control1 ~]$ ansible dbsystems -b -m user -a "name=consultant"
+db2 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "comment": "",
+    "create_home": true,
+    "group": 1004,
+    "home": "/home/consultant",
+    "name": "consultant",
+    "shell": "/bin/bash",
+    "state": "present",
+    "system": false,
+    "uid": 1004
+}
+db1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "comment": "",
+    "create_home": true,
+    "group": 1004,
+    "home": "/home/consultant",
+    "name": "consultant",
+    "shell": "/bin/bash",
+    "state": "present",
+    "system": false,
+    "uid": 1004
+}
+[ansible@control1 ~]$ ansible dbsystems -b -m user -a "name=supervisor"
+db2 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "comment": "",
+    "create_home": true,
+    "group": 1005,
+    "home": "/home/supervisor",
+    "name": "supervisor",
+    "shell": "/bin/bash",
+    "state": "present",
+    "system": false,
+    "uid": 1005
+}
+db1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "comment": "",
+    "create_home": true,
+    "group": 1005,
+    "home": "/home/supervisor",
+    "name": "supervisor",
+    "shell": "/bin/bash",
+    "state": "present",
+    "system": false,
+    "uid": 1005
+}
+[ansible@control1 ~]$ ansible dbsystems -b -m file -a "path=/home/consultant/.ssh state=directory owner=consultant group
+=consultant mode=0755"
+db2 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "gid": 1004,
+    "group": "consultant",
+    "mode": "0755",
+    "owner": "consultant",
+    "path": "/home/consultant/.ssh",
+    "secontext": "unconfined_u:object_r:ssh_home_t:s0",
+    "size": 6,
+    "state": "directory",
+    "uid": 1004
+}
+db1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "gid": 1004,
+    "group": "consultant",
+    "mode": "0755",
+    "owner": "consultant",
+    "path": "/home/consultant/.ssh",
+    "secontext": "unconfined_u:object_r:ssh_home_t:s0",
+    "size": 6,
+    "state": "directory",
+    "uid": 1004
+}
+[ansible@control1 ~]$ ansible dbsystems -b -m file -a "path=/home/supervisor/.ssh state=directory owner=supervisor group
+=supervisor mode=0755"
+
+db2 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "gid": 1005,
+    "group": "supervisor",
+    "mode": "0755",
+    "owner": "supervisor",
+    "path": "/home/supervisor/.ssh",
+    "secontext": "unconfined_u:object_r:ssh_home_t:s0",
+    "size": 6,
+    "state": "directory",
+    "uid": 1005
+}
+db1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "gid": 1005,
+    "group": "supervisor",
+    "mode": "0755",
+    "owner": "supervisor",
+    "path": "/home/supervisor/.ssh",
+    "secontext": "unconfined_u:object_r:ssh_home_t:s0",
+    "size": 6,
+    "state": "directory",
+    "uid": 1005
+}
+[ansible@control1 ~]$ ansible dbsystems -b -m copy -a "src=/home/ansible/keys/consultant/authorized_keys dest=/home/consultant/.ssh/authorized_keys mode=0600 owner=consultant group
+=consultant"
+db1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "checksum": "15cdf10f16a3744bdcc58a5603cd75c0b3732506",
+    "dest": "/home/consultant/.ssh/authorized_keys",
+    "gid": 1004,
+    "group": "consultant",
+    "md5sum": "79c82d10c95c5fb7ce98f20190d3f1f8",
+    "mode": "0600",
+    "owner": "consultant",
+    "secontext": "unconfined_u:object_r:ssh_home_t:s0",
+    "size": 395,
+    "src": "/home/ansible/.ansible/tmp/ansible-tmp-1666449736.25-1788-16401941016391/source",
+    "state": "file",
+    "uid": 1004
+}
+db2 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "checksum": "15cdf10f16a3744bdcc58a5603cd75c0b3732506",
+    "dest": "/home/consultant/.ssh/authorized_keys",
+    "gid": 1004,
+    "group": "consultant",
+    "md5sum": "79c82d10c95c5fb7ce98f20190d3f1f8",
+    "mode": "0600",
+    "owner": "consultant",
+    "secontext": "unconfined_u:object_r:ssh_home_t:s0",
+    "size": 395,
+    "src": "/home/ansible/.ansible/tmp/ansible-tmp-1666449736.26-1790-174363114737097/source",
+    "state": "file",
+    "uid": 1004
+}
+[ansible@control1 ~]$ ansible dbsystems -b -m copy -a "src=/home/ansible/keys/supervisor/authorized_keys dest=/home/supervisor/.ssh/authorized_keys mode=0600 owner=supervisor group=supervisor"
+db1 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "checksum": "cc86eea9772cdedd5a46b437d1c121a1539545fc",
+    "dest": "/home/supervisor/.ssh/authorized_keys",
+    "gid": 1005,
+    "group": "supervisor",
+    "md5sum": "16f0dd92e6c801016cf1c13b0ca8c60f",
+    "mode": "0600",
+    "owner": "supervisor",
+    "secontext": "unconfined_u:object_r:ssh_home_t:s0",
+    "size": 395,
+    "src": "/home/ansible/.ansible/tmp/ansible-tmp-1666449779.18-1842-10153624075702/source",
+    "state": "file",
+    "uid": 1005
+}
+db2 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "checksum": "cc86eea9772cdedd5a46b437d1c121a1539545fc",
+    "dest": "/home/supervisor/.ssh/authorized_keys",
+    "gid": 1005,
+    "group": "supervisor",
+    "md5sum": "16f0dd92e6c801016cf1c13b0ca8c60f",
+    "mode": "0600",
+    "owner": "supervisor",
+    "secontext": "unconfined_u:object_r:ssh_home_t:s0",
+    "size": 395,
+    "src": "/home/ansible/.ansible/tmp/ansible-tmp-1666449779.18-1844-154538188917539/source",
+    "state": "file",
+    "uid": 1005
+}
+[ansible@control1 ~]$
+[ansible@control1 ~]$ ansible all -b -m service -a "name=auditd enabled=yes"
+db1 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ssh_exchange_identification: Connection closed by remote host",
+    "unreachable": true
+}
+localhost | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "enabled": true,
+    "name": "auditd",
+    "status": {
+        "ActiveEnterTimestamp": "Sat 2022-10-22 14:21:52 UTC",
+        "ActiveEnterTimestampMonotonic": "7132316",
+        "ActiveExitTimestampMonotonic": "0",
+        "ActiveState": "active",
+        "After": "systemd-journald.socket system.slice local-fs.target systemd-tmpfiles-setup.service",
+        "AllowIsolate": "no",
+        "AmbientCapabilities": "0",
+        "AssertResult": "yes",
+        "AssertTimestamp": "Sat 2022-10-22 14:21:51 UTC",
+        "AssertTimestampMonotonic": "6882018",
+        "Before": "shutdown.target crond.service systemd-update-utmp.service sysinit.target",
+        "BlockIOAccounting": "no",
+        "BlockIOWeight": "18446744073709551615",
+        "CPUAccounting": "no",
+        "CPUQuotaPerSecUSec": "infinity",
+        "CPUSchedulingPolicy": "0",
+        "CPUSchedulingPriority": "0",
+        "CPUSchedulingResetOnFork": "no",
+        "CPUShares": "18446744073709551615",
+        "CanIsolate": "no",
+        "CanReload": "no",
+        "CanStart": "yes",
+        "CanStop": "no",
+        "CapabilityBoundingSet": "18446744073709551615",
+        "CollectMode": "inactive",
+        "ConditionResult": "yes",
+        "ConditionTimestamp": "Sat 2022-10-22 14:21:51 UTC",
+
+        "ConditionTimestampMonotonic": "6881969",
+        "Conflicts": "shutdown.target",
+        "ControlGroup": "/system.slice/auditd.service",
+        "ControlPID": "0",
+        "DefaultDependencies": "no",
+        "Delegate": "no",
+        "Description": "Security Auditing Service",
+        "DevicePolicy": "auto",
+        "Documentation": "man:auditd(8) https://github.com/linux-audit/audit-documentation",
+        "ExecMainCode": "0",
+        "ExecMainExitTimestampMonotonic": "0",
+        "ExecMainPID": "420",
+        "ExecMainStartTimestamp": "Sat 2022-10-22 14:21:52 UTC",
+        "ExecMainStartTimestampMonotonic": "7022130",
+        "ExecMainStatus": "0",
+        "ExecStart": "{ path=/sbin/auditd ; argv[]=/sbin/auditd ; ignore_errors=no ; start_time=[Sat 2022-10-22 14:21:51 UTC] ; stop_time=[Sat 2022-10-22 14:21:52 UTC] ; pid=419 ; code=exited ; status=0 }",
+        "ExecStartPost": "{ path=/sbin/augenrules ; argv[]=/sbin/augenrules --load ; ignore_errors=yes ; start_time=[Sat 2022-10-22 14:21:52 UTC] ; stop_time=[Sat 2022-10-22 14:21:52 UTC] ; pid=436 ; code=exited ; status=0 }",
+        "FailureAction": "none",
+        "FileDescriptorStoreMax": "0",
+        "FragmentPath": "/usr/lib/systemd/system/auditd.service",
+        "GuessMainPID": "yes",
+        "IOScheduling": "0",
+        "Id": "auditd.service",
+        "IgnoreOnIsolate": "no",
+        "IgnoreOnSnapshot": "no",
+        "IgnoreSIGPIPE": "yes",
+        "InactiveEnterTimestampMonotonic": "0",
+        "InactiveExitTimestamp": "Sat 2022-10-22 14:21:51 UTC",
+        "InactiveExitTimestampMonotonic": "6883207",
+        "JobTimeoutAction": "none",
+        "JobTimeoutUSec": "0",
+        "KillMode": "control-group",
+        "KillSignal": "15",
+        "LimitAS": "18446744073709551615",
+        "LimitCORE": "18446744073709551615",
+        "LimitCPU": "18446744073709551615",
+        "LimitDATA": "18446744073709551615",
+        "LimitFSIZE": "18446744073709551615",
+        "LimitLOCKS": "18446744073709551615",
+        "LimitMEMLOCK": "65536",
+        "LimitMSGQUEUE": "819200",
+        "LimitNICE": "0",
+        "LimitNOFILE": "4096",
+        "LimitNPROC": "3653",
+        "LimitRSS": "18446744073709551615",
+        "LimitRTPRIO": "0",
+        "LimitRTTIME": "18446744073709551615",
+        "LimitSIGPENDING": "3653",
+        "LimitSTACK": "18446744073709551615",
+        "LoadState": "loaded",
+        "MainPID": "420",
+        "MemoryAccounting": "no",
+        "MemoryCurrent": "18446744073709551615",
+        "MemoryLimit": "18446744073709551615",
+        "MountFlags": "0",
+        "Names": "auditd.service",
+        "NeedDaemonReload": "no",
+        "Nice": "0",
+        "NoNewPrivileges": "no",
+        "NonBlocking": "no",
+        "NotifyAccess": "none",
+        "OOMScoreAdjust": "0",
+        "OnFailureJobMode": "replace",
+        "PIDFile": "/run/auditd.pid",
+        "PermissionsStartOnly": "no",
+        "PrivateDevices": "no",
+        "PrivateNetwork": "no",
+        "PrivateTmp": "no",
+        "ProtectHome": "no",
+        "ProtectSystem": "no",
+        "RefuseManualStart": "no",
+        "RefuseManualStop": "yes",
+        "RemainAfterExit": "no",
+        "Requires": "system.slice",
+        "Restart": "no",
+        "RestartUSec": "100ms",
+        "Result": "success",
+        "RootDirectoryStartOnly": "no",
+        "RuntimeDirectoryMode": "0755",
+        "SameProcessGroup": "no",
+        "SecureBits": "0",
+        "SendSIGHUP": "no",
+        "SendSIGKILL": "yes",
+        "Slice": "system.slice",
+        "StandardError": "inherit",
+        "StandardInput": "null",
+        "StandardOutput": "journal",
+        "StartLimitAction": "none",
+        "StartLimitBurst": "5",
+        "StartLimitInterval": "10000000",
+        "StartupBlockIOWeight": "18446744073709551615",
+        "StartupCPUShares": "18446744073709551615",
+        "StatusErrno": "0",
+        "StopWhenUnneeded": "no",
+        "SubState": "running",
+        "SyslogLevelPrefix": "yes",
+        "SyslogPriority": "30",
+        "SystemCallErrorNumber": "0",
+        "TTYReset": "no",
+        "TTYVHangup": "no",
+        "TTYVTDisallocate": "no",
+        "TasksAccounting": "no",
+        "TasksCurrent": "18446744073709551615",
+        "TasksMax": "18446744073709551615",
+        "TimeoutStartUSec": "1min 30s",
+        "TimeoutStopUSec": "1min 30s",
+        "TimerSlackNSec": "50000",
+        "Transient": "no",
+        "Type": "forking",
+        "UMask": "0022",
+        "UnitFilePreset": "enabled",
+        "UnitFileState": "enabled",
+        "WantedBy": "multi-user.target",
+        "WatchdogTimestamp": "Sat 2022-10-22 14:21:52 UTC",
+        "WatchdogTimestampMonotonic": "7022156",
+        "WatchdogUSec": "0"
+    }
+}
+db2 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "enabled": true,
+    "name": "auditd",
+    "status": {
+        "ActiveEnterTimestamp": "Sat 2022-10-22 14:21:38 UTC",
+        "ActiveEnterTimestampMonotonic": "7440496",
+        "ActiveExitTimestampMonotonic": "0",
+        "ActiveState": "active",
+        "After": "systemd-journald.socket local-fs.target systemd-tmpfiles-setup.service system.slice",
+        "AllowIsolate": "no",
+        "AmbientCapabilities": "0",
+        "AssertResult": "yes",
+        "AssertTimestamp": "Sat 2022-10-22 14:21:38 UTC",
+        "AssertTimestampMonotonic": "7212508",
+        "Before": "systemd-update-utmp.service sysinit.target shutdown.target crond.service",
+        "BlockIOAccounting": "no",
+        "BlockIOWeight": "18446744073709551615",
+        "CPUAccounting": "no",
+        "CPUQuotaPerSecUSec": "infinity",
+        "CPUSchedulingPolicy": "0",
+        "CPUSchedulingPriority": "0",
+        "CPUSchedulingResetOnFork": "no",
+        "CPUShares": "18446744073709551615",
+        "CanIsolate": "no",
+        "CanReload": "no",
+        "CanStart": "yes",
+        "CanStop": "no",
+        "CapabilityBoundingSet": "18446744073709551615",
+        "CollectMode": "inactive",
+        "ConditionResult": "yes",
+        "ConditionTimestamp": "Sat 2022-10-22 14:21:38 UTC",
+
+        "ConditionTimestampMonotonic": "7212479",
+        "Conflicts": "shutdown.target",
+        "ControlGroup": "/system.slice/auditd.service",
+        "ControlPID": "0",
+        "DefaultDependencies": "no",
+        "Delegate": "no",
+        "Description": "Security Auditing Service",
+        "DevicePolicy": "auto",
+        "Documentation": "man:auditd(8) https://github.com/linux-audit/audit-documentation",
+        "ExecMainCode": "0",
+        "ExecMainExitTimestampMonotonic": "0",
+        "ExecMainPID": "422",
+        "ExecMainStartTimestamp": "Sat 2022-10-22 14:21:38 UTC",
+        "ExecMainStartTimestampMonotonic": "7315689",
+        "ExecMainStatus": "0",
+        "ExecStart": "{ path=/sbin/auditd ; argv[]=/sbin/auditd ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+        "ExecStartPost": "{ path=/sbin/augenrules ; argv[]=/sbin/augenrules --load ; ignore_errors=yes ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+        "FailureAction": "none",
+        "FileDescriptorStoreMax": "0",
+        "FragmentPath": "/usr/lib/systemd/system/auditd.service",
+        "GuessMainPID": "yes",
+        "IOScheduling": "0",
+        "Id": "auditd.service",
+        "IgnoreOnIsolate": "no",
+        "IgnoreOnSnapshot": "no",
+        "IgnoreSIGPIPE": "yes",
+        "InactiveEnterTimestampMonotonic": "0",
+        "InactiveExitTimestamp": "Sat 2022-10-22 14:21:38 UTC",
+        "InactiveExitTimestampMonotonic": "7213068",
+        "JobTimeoutAction": "none",
+        "JobTimeoutUSec": "0",
+        "KillMode": "control-group",
+        "KillSignal": "15",
+        "LimitAS": "18446744073709551615",
+        "LimitCORE": "18446744073709551615",
+        "LimitCPU": "18446744073709551615",
+        "LimitDATA": "18446744073709551615",
+        "LimitFSIZE": "18446744073709551615",
+        "LimitLOCKS": "18446744073709551615",
+        "LimitMEMLOCK": "65536",
+        "LimitMSGQUEUE": "819200",
+        "LimitNICE": "0",
+        "LimitNOFILE": "4096",
+        "LimitNPROC": "3653",
+        "LimitRSS": "18446744073709551615",
+        "LimitRTPRIO": "0",
+        "LimitRTTIME": "18446744073709551615",
+        "LimitSIGPENDING": "3653",
+        "LimitSTACK": "18446744073709551615",
+        "LoadState": "loaded",
+        "MainPID": "422",
+        "MemoryAccounting": "no",
+        "MemoryCurrent": "18446744073709551615",
+        "MemoryLimit": "18446744073709551615",
+        "MountFlags": "0",
+        "Names": "auditd.service",
+        "NeedDaemonReload": "no",
+        "Nice": "0",
+        "NoNewPrivileges": "no",
+        "NonBlocking": "no",
+        "NotifyAccess": "none",
+        "OOMScoreAdjust": "0",
+        "OnFailureJobMode": "replace",
+        "PIDFile": "/run/auditd.pid",
+        "PermissionsStartOnly": "no",
+        "PrivateDevices": "no",
+        "PrivateNetwork": "no",
+        "PrivateTmp": "no",
+        "ProtectHome": "no",
+        "ProtectSystem": "no",
+        "RefuseManualStart": "no",
+        "RefuseManualStop": "yes",
+        "RemainAfterExit": "no",
+        "Requires": "system.slice",
+        "Restart": "no",
+        "RestartUSec": "100ms",
+        "Result": "success",
+        "RootDirectoryStartOnly": "no",
+        "RuntimeDirectoryMode": "0755",
+        "SameProcessGroup": "no",
+        "SecureBits": "0",
+        "SendSIGHUP": "no",
+        "SendSIGKILL": "yes",
+        "Slice": "system.slice",
+        "StandardError": "inherit",
+        "StandardInput": "null",
+        "StandardOutput": "journal",
+        "StartLimitAction": "none",
+        "StartLimitBurst": "5",
+        "StartLimitInterval": "10000000",
+        "StartupBlockIOWeight": "18446744073709551615",
+        "StartupCPUShares": "18446744073709551615",
+        "StatusErrno": "0",
+        "StopWhenUnneeded": "no",
+        "SubState": "running",
+        "SyslogLevelPrefix": "yes",
+        "SyslogPriority": "30",
+        "SystemCallErrorNumber": "0",
+        "TTYReset": "no",
+        "TTYVHangup": "no",
+        "TTYVTDisallocate": "no",
+        "TasksAccounting": "no",
+        "TasksCurrent": "18446744073709551615",
+        "TasksMax": "18446744073709551615",
+        "TimeoutStartUSec": "1min 30s",
+        "TimeoutStopUSec": "1min 30s",
+        "TimerSlackNSec": "50000",
+        "Transient": "no",
+        "Type": "forking",
+        "UMask": "0022",
+        "UnitFilePreset": "enabled",
+        "UnitFileState": "disabled",
+        "WatchdogTimestamp": "Sat 2022-10-22 14:21:38 UTC",
+        "WatchdogTimestampMonotonic": "7315713",
+        "WatchdogUSec": "0"
+    }
+}

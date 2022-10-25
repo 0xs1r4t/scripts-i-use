@@ -1,3 +1,2 @@
-add after
-users  		ALL=(ALL)	NOPASSWD: ALL
+# add after: %wheel user group
 ansible           ALL=(ALL)       NOPASSWD: ALL
