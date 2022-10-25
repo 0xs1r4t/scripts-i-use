@@ -1,0 +1,41 @@
+[ansible@control1 ~]$ vim /home/ansible/inventory
+[ansible@control1 ~]$ mkdir group_vars
+[ansible@control1 ~]$ vim group_vars/media
+[ansible@control1 ~]$ vim /home/ansible/inventory
+[ansible@control1 ~]$ vim group_vars/media
+[ansible@control1 ~]$ vim group_vars/webservers
+[ansible@control1 ~]$ vim group_vars/media
+[ansible@control1 ~]$ vim group_vars/media
+[ansible@control1 ~]$ vim group_vars/webservers
+[ansible@control1 ~]$ vim group_vars/media
+[ansible@control1 ~]$ mkdir host_vars
+[ansible@control1 ~]$ vim host_vars/web1
+[ansible@control1 ~]$ ./scripts/backup.sh
+
+PLAY [all] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [media2]
+ok: [web2]
+ok: [web1]
+ok: [media1]
+
+TASK [create backup directories] ***********************************************
+changed: [web1]
+ok: [media1]
+changed: [web2]
+changed: [media2]
+
+PLAY [web1] ********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [web1]
+
+TASK [backup scripts] **********************************************************
+ok: [web1]
+
+PLAY RECAP *********************************************************************
+media1                     : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+media2                     : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+web1                       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+web2                       : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0

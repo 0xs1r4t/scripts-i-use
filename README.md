@@ -3,7 +3,7 @@
 ├── README.md
 ├── automation
 │   ├── ansible
-│   │   ├── ansible-ad-hoc-cmds
+│   │   ├── ad-hoc-cmds
 │   │   │   ├── command-usage.log
 │   │   │   ├── commands.sh
 │   │   │   └── userlist.txt
@@ -12,11 +12,21 @@
 │   │   │   ├── git-setup.yml
 │   │   │   ├── inventory
 │   │   │   └── visudo.example
-│   │   └── getting-started
-│   │       ├── inventory
-│   │       ├── output
-│   │       ├── ping.log
-│   │       └── visudo.example
+│   │   ├── getting-started
+│   │   │   ├── inventory
+│   │   │   ├── output
+│   │   │   ├── ping.log
+│   │   │   └── visudo.example
+│   │   └── inventories
+│   │       ├── create-inventories.log
+│   │       ├── group_vars
+│   │       │   ├── media
+│   │       │   └── webservers
+│   │       ├── host_vars
+│   │       │   └── web1
+│   │       ├── inevntory
+│   │       └── scripts
+│   │           └── backup.sh
 │   └── jenkins
 ├── bashrc.sh
 ├── containers-and-clusters
@@ -98,5 +108,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-31 directories, 66 files
+35 directories, 72 files
 ```
