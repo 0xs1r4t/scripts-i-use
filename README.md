@@ -17,16 +17,20 @@
 │   │   │   ├── output
 │   │   │   ├── ping.log
 │   │   │   └── visudo.example
-│   │   └── inventories
-│   │       ├── create-inventories.log
-│   │       ├── group_vars
-│   │       │   ├── media
-│   │       │   └── webservers
-│   │       ├── host_vars
-│   │       │   └── web1
-│   │       ├── inevntory
-│   │       └── scripts
-│   │           └── backup.sh
+│   │   ├── inventories
+│   │   │   ├── create-inventories.log
+│   │   │   ├── group_vars
+│   │   │   │   ├── media
+│   │   │   │   └── webservers
+│   │   │   ├── host_vars
+│   │   │   │   └── web1
+│   │   │   ├── inevntory
+│   │   │   └── scripts
+│   │   │       └── backup.sh
+│   │   └── playbook-basics
+│   │       ├── basics.log
+│   │       ├── inventory
+│   │       └── web.yml
 │   └── jenkins
 ├── bashrc.sh
 ├── containers-and-clusters
@@ -108,5 +112,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-35 directories, 72 files
+36 directories, 75 files
 ```
