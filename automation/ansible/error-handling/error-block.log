@@ -1,0 +1,58 @@
+[ansible@control1 ~]$ vim /home/ansible/report.yml
+[ansible@control1 ~]$ ansible-playbook report.yml
+
+PLAY [localhost] *****************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************
+ok: [localhost]
+TASK [get_url] *******************************************************************************************************
+changed: [localhost]
+
+TASK [replace] *******************************************************************************************************
+changed: [localhost]
+
+TASK [debug] *********************************************************************************************************
+ok: [localhost] => {
+    "msg": "File downloaded"
+}
+
+TASK [debug] *********************************************************************************************************
+ok: [localhost] => {
+    "msg": "attempt completed!"
+}
+
+PLAY RECAP ***********************************************************************************************************
+localhost                  : ok=5    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+[ansible@control1 ~]$ cat transaction_list
+
+Invoice 2345  $539
+Invoice 6372  $376
+
+Invoice 36283  $182
+Invoice 2345  $539
+Invoice 3793  $84
+
+Invoice 2345  $539
+Invoice 8642  $386
+
+
+Invoice 3753  $472
+[ansible@control1 ~]$ cat report.yml
+---
+- hosts: localhost
+  tasks:
+  - name: download transaction_list
+    block:
+      - get_url:
+          url: http://apps.l33t.com/transaction_list
+          dest: /home/ansible/transaction_list
+      - replace:
+          path: /home/ansible/transaction_list
+          regexp: "#BLANKLINE"
+          replace: '\n'
+      - debug: msg="File downloaded"
+    rescue:
+      - debug: msg="l33t.com seems to be down. try again later."
+    always:
+      - debug: msg="attempt completed!"

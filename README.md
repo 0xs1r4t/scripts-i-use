@@ -12,6 +12,9 @@
 │   │   │   ├── git-setup.yml
 │   │   │   ├── inventory
 │   │   │   └── visudo.example
+│   │   ├── error-handling
+│   │   │   ├── error-block.log
+│   │   │   └── report.yml
 │   │   ├── getting-started
 │   │   │   ├── inventory
 │   │   │   ├── output
@@ -27,10 +30,14 @@
 │   │   │   ├── inevntory
 │   │   │   └── scripts
 │   │   │       └── backup.sh
-│   │   └── playbook-basics
-│   │       ├── basics.log
-│   │       ├── inventory
-│   │       └── web.yml
+│   │   ├── playbook-basics
+│   │   │   ├── basics.log
+│   │   │   ├── inventory
+│   │   │   └── web.yml
+│   │   └── templates-variables-facts
+│   │       ├── hardened.j2
+│   │       ├── security.yml
+│   │       └── templating.log
 │   └── jenkins
 ├── bashrc.sh
 ├── containers-and-clusters
@@ -112,5 +119,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-36 directories, 75 files
+38 directories, 80 files
 ```

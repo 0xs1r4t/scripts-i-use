@@ -1,0 +1,53 @@
+[ansible@control1 ~]$ vim /home/ansible/hardened.j2
+[ansible@control1 ~]$ cat hardened.j2
+%sysops {{ ansible_default_ipv4.address }} = (ALL) ALL
+Host_Alias WEBSERVERS = {{ groups['web']|join(' ') }}
+Host_Alias DBSERVERS = {{ groups['database']|join(' ') }}
+%httpd WEBSERVERS = /bin/su - webuser
+%dba DBSERVERS = /bin/su - dbuser
+[ansible@control1 ~]$ vim /home/ansible/security.yml
+[ansible@control1 ~]$ cat security.yml
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name:
+    template:
+      src: /home/ansible/hardened.j2
+      dest: /etc/sudoers.d/hardened
+      validate: /sbin/visudo -cf %s
+[ansible@control1 ~]$ an
+anacron               ansible-connection    ansible-doc-2         ansible-inventory     ansible-pull-2
+ansible               ansible-console       ansible-doc-2.7       ansible-playbook      ansible-pull-2.7
+ansible-2             ansible-console-2     ansible-galaxy        ansible-playbook-2    ansible-vault
+ansible-2.7           ansible-console-2.7   ansible-galaxy-2      ansible-playbook-2.7  ansible-vault-2
+ansible-config        ansible-doc           ansible-galaxy-2.7    ansible-pull          ansible-vault-2.7
+[ansible@control1 ~]$ ansible-playbook security.yml
+
+PLAY [all] ***********************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************
+ok: [localhost]
+ok: [node2]
+ok: [node1]
+
+TASK [template] ******************************************************************************************************
+changed: [node2]
+changed: [node1]
+changed: [localhost]
+
+PLAY RECAP ***********************************************************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+node1                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+node2                      : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+[ansible@control1 ~]$ cat /etc/sudoers.d/hardened
+cat: /etc/sudoers.d/hardened: Permission denied
+[ansible@control1 ~]$ sudo su
+[root@control1 ansible]# cat /etc/sudoers.d/hardened
+%sysops 10.0.1.187 = (ALL) ALL
+Host_Alias WEBSERVERS = node1
+Host_Alias DBSERVERS = node2
+%httpd WEBSERVERS = /bin/su - webuser
+%dba DBSERVERS = /bin/su - dbuser
+[root@control1 ansible]# ^C
