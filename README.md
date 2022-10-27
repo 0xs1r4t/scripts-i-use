@@ -30,6 +30,9 @@
 │   │   │   ├── inevntory
 │   │   │   └── scripts
 │   │   │       └── backup.sh
+│   │   ├── multiple-plays
+│   │   │   ├── bootstrap.yml
+│   │   │   └── multiple.log
 │   │   ├── playbook-basics
 │   │   │   ├── basics.log
 │   │   │   ├── inventory
@@ -119,5 +122,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-38 directories, 80 files
+39 directories, 82 files
 ```

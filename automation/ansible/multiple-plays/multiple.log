@@ -1,0 +1,102 @@
+[ansible@control ~]$ vim /home/ansible/bootstrap.yml
+[ansible@control ~]$ cat bootstrap.yml
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: edit host file
+      lineinfile:
+        path: /etc/hosts
+        line: "169.168.0.1 ansible.xyzcorp.com"
+    - name: install elinks
+      package:
+        name: elinks
+        state: latest
+    - name: create audit user
+      user:
+        name: xyz_audit
+        state: present
+    - name: update motd      copy:
+        src: /home/ansible/motd
+        dest: /etc/motd
+    - name: update issue
+      copy:
+        src: /home/ansible/issue
+        dest: /etc/issue
+
+- hosts: network
+  become: yes
+  tasks:
+    - name: install netcat
+      yum:
+        name: nmap-ncat
+        state: latest
+    - name: create network user
+      user:
+        name: xyzcorp_network
+        state: present
+
+- hosts: sysadmin
+  become: yes
+  tasks:
+    - name: copy tarball
+      copy:
+        src: /home/ansible/scripts.tgz
+        dest: /mnt/storage
+[ansible@control ~]$ ansible-playbook bootstrap.yml
+
+PLAY [all] ***********************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************
+ok: [localhost]
+ok: [node1]
+ok: [node2]
+
+TASK [edit host file] ************************************************************************************************
+ok: [node1]
+ok: [localhost]
+ok: [node2]
+
+TASK [install elinks] ************************************************************************************************
+ok: [node1]
+ok: [node2]
+ok: [localhost]
+
+TASK [create audit user] *********************************************************************************************
+ok: [node1]
+ok: [localhost]
+ok: [node2]
+
+TASK [update motd] ***************************************************************************************************
+ok: [node1]
+ok: [localhost]
+ok: [node2]
+
+TASK [update issue] **************************************************************************************************
+ok: [node1]
+ok: [localhost]
+ok: [node2]
+
+PLAY [network] *******************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************
+ok: [node1]
+
+TASK [install netcat] ************************************************************************************************
+changed: [node1]
+
+TASK [create network user] *******************************************************************************************
+changed: [node1]
+
+PLAY [sysadmin] ******************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************
+ok: [node2]
+
+TASK [copy tarball] **************************************************************************************************
+changed: [node2]
+
+PLAY RECAP ***********************************************************************************************************
+localhost                  : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+node1                      : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+node2                      : ok=8    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
