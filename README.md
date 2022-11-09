@@ -119,8 +119,10 @@
     ├── file-management.sh
     ├── gpg-keys.sh
     ├── pre-commit.sh
+    ├── screen-multitasking
+    │   └── README.md
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-39 directories, 82 files
+40 directories, 83 files
 ```
