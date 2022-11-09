@@ -42,7 +42,6 @@
 │   │       ├── security.yml
 │   │       └── templating.log
 │   └── jenkins
-├── bashrc.sh
 ├── containers-and-clusters
 │   ├── basics
 │   │   ├── automation
@@ -110,6 +109,7 @@
 │       └── maintainance
 │           └── backup-restore-schedule.log
 ├── do-not-commit
+│   ├── ascii.txt
 │   ├── mongodb-intro.sh
 │   ├── mousemove.ps1
 │   └── pass-conf.txt
