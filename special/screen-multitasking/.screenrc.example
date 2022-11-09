@@ -1,0 +1,17 @@
+# kill the startup screen
+startup_message off
+
+# don't dump your session if the shell is interrupted/killed
+autodetach on
+
+# always display a status line in a session
+hardstatus on
+hardstatus alwayslastline
+hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-='
+
+# use F10 to select window 0, F1-F4 to select window 1-4
+bindkey "^[[21~" select 0
+bindkey "^[OP" select 1
+bindkey "^[OQ" select 2
+bindkey "^[OR" select 3
+bindkey "^[OS" select 4
