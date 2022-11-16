@@ -117,6 +117,7 @@
 │   └── gif-to-webm.sh
 └── special
     ├── file-management.sh
+    ├── git-commands.sh
     ├── gpg-keys.sh
     ├── pre-commit.sh
     ├── screen-multitasking
@@ -124,5 +125,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-40 directories, 83 files
+40 directories, 84 files
 ```
