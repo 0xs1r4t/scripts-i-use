@@ -116,6 +116,11 @@
 ├── ffmpeg
 │   └── gif-to-webm.sh
 └── special
+    ├── bash-extras
+    │   └── herestrings
+    │       ├── array-herestring.sh
+    │       ├── herestring.sh
+    │       └── words-herestring.sh
     ├── file-management.sh
     ├── git-commands.sh
     ├── gpg-keys.sh
@@ -125,5 +130,5 @@
     ├── search-pkg.sh
     └── using-pass-as-a-passwd-manager.sh
 
-40 directories, 84 files
+42 directories, 87 files
 ```

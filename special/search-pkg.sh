@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # search for packages
 # arch linux!
 

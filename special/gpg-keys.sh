@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # create a key
 gpg --full-generate-key
 

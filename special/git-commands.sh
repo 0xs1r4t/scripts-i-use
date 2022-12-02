@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # REVERT A BAD COMMIT
 # not pushed [local]
 git reset --soft HEAD^

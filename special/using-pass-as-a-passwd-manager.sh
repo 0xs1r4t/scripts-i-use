@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # initialize the passwd
 pass init $GPG_KEY
 
