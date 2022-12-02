@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # manage files over a linux server
 
 # create a file / change its timestamp

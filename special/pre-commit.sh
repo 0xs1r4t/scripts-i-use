@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # .git/hooks/pre-commit
 # a pre-commit hook.
@@ -12,5 +12,3 @@ echo '```' >> README.md
 git add README.md
 
 echo "👌 pre-commit completed!"
-
-# end
